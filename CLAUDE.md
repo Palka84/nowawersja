@@ -26,3 +26,6 @@ Korony porcelanowej (np. E.max) nie ma w cenniku.
 
 ## Nazewnictwo
 Zawsze pisz „korony cyrkonowe Amann Girrbach lub Ivoclar”, także w podsumowaniach i tabelach.
+
+## Numery zębów
+W ofercie zawsze wypisuj numery zębów (FDI): w opisie planu (wstęp) i przy każdej pozycji zakresu leczenia (implanty, korony, mosty, prace tymczasowe). Numery ustalaj ze schematu i RTG kliniki.
