@@ -14,7 +14,7 @@ Najczęściej używane ceny promocyjne (EUR):
 | Korona cyrkonowa Amann Girrbach lub Ivoclar (własny ząb) | 200 |
 | Korona cyrkonowa na implancie | 242 |
 | Leczenie kanałowe jednokanałowe / trzonowce | 149 / 166 |
-| Licówka porcelanowa (Laminate Veneer / Empress Veneer) | 421 |
+| Licówka Laminate Veneer / korona porcelanowa Empress (Empress Veneer) | 421 |
 | Licówka kompozytowa | 149 |
 | Implant Medentika / Straumann | 421 / 849 |
 | Podniesienie zatoki / szerokie | 718 / 973 |
@@ -22,7 +22,7 @@ Najczęściej używane ceny promocyjne (EUR):
 | Ekstrakcja / ekstrakcja chirurgiczna (Extraction-2) | 30 / 149 |
 | Surgical Extraction (osobna pozycja w cenniku) | 336 |
 
-Korona porcelanowa E.max: 421 EUR (potwierdzone przez Paulinę; w cenniku nie ma osobnej pozycji, klinika liczy ją jak Laminate Veneer). E.max i Empress to różne ceramiki Ivoclar.
+Terminologia kliniki (wg Pauliny): Empress Veneer = pełna korona porcelanowa (Empress), Laminate Veneer = licówka (tylko przednia część zęba). Obie po 421 EUR. Zapis kliniki „laminate/empress veneers” = licówki, a tam gdzie potrzeba (np. most) korony Empress. W ofertach pisz „korona porcelanowa Empress” i „licówka porcelanowa Laminate Veneer”.
 
 ## Nazewnictwo
 Zawsze pisz „korony cyrkonowe Amann Girrbach lub Ivoclar”, także w podsumowaniach i tabelach.
