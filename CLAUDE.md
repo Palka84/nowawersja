@@ -29,3 +29,6 @@ Zawsze pisz „korony cyrkonowe Amann Girrbach lub Ivoclar”, także w podsumow
 
 ## Numery zębów
 W ofercie zawsze wypisuj numery zębów (FDI): w opisie planu (wstęp) i przy każdej pozycji zakresu leczenia (implanty, korony, mosty, prace tymczasowe). Numery ustalaj ze schematu i RTG kliniki.
+
+## Starsze plany
+Nie wracaj do wcześniej przygotowanych planów i nie zmieniaj ich bez wyraźnej prośby Pauliny, nawet przy zmianie zasad.
