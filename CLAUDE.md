@@ -22,7 +22,7 @@ Najczęściej używane ceny promocyjne (EUR):
 | Ekstrakcja / ekstrakcja chirurgiczna (Extraction-2) | 30 / 149 |
 | Surgical Extraction (osobna pozycja w cenniku) | 336 |
 
-Korony porcelanowej (np. E.max) nie ma w cenniku.
+Korona porcelanowa E.max: 421 EUR (potwierdzone przez Paulinę; w cenniku nie ma osobnej pozycji, klinika liczy ją jak Laminate Veneer). E.max i Empress to różne ceramiki Ivoclar.
 
 ## Nazewnictwo
 Zawsze pisz „korony cyrkonowe Amann Girrbach lub Ivoclar”, także w podsumowaniach i tabelach.
