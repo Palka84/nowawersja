@@ -32,3 +32,6 @@ W ofercie zawsze wypisuj numery zębów (FDI): w opisie planu (wstęp) i przy ka
 
 ## Starsze plany
 Nie wracaj do wcześniej przygotowanych planów i nie zmieniaj ich bez wyraźnej prośby Pauliny, nawet przy zmianie zasad.
+
+## Format PDF
+Oferty przygotowuj tylko w wersji na telefon (szerokość 520 px, reguły mobilne włączone). Nie rób wersji na komputer. Nazwa pliku bez dopisku „telefon”: `Plan-leczenia-Esnan-pl-Imie-Nazwisko.pdf`.
