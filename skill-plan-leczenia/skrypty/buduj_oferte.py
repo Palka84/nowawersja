@@ -112,7 +112,7 @@ T = {
   accept_btn='I accept the plan — message us on WhatsApp →', costs_btn='See the costs',
   wa_accept=f'Hello, I accept my treatment plan (case {CASE}) and would like to book my dates.',
   wa_q=f'Hello, I have a question about my treatment plan (case {CASE}).',
-  meta=[('Case', CASE), ('Prepared for', 'Agnieszka Parafiniuk'), ('Coordinator', 'Paulina Ayla'),
+  meta=[('Case', CASE), ('Prepared for', CASE), ('Coordinator', 'Paulina Ayla'),
         ('Date', '11 Oct 2026'), ('Offer valid until', '10 Nov 2026')],
   plan_tag='Treatment plan', plan_h2='Implant and prosthetic <span class="accent">treatment plan</span>',
   plan_intro='Treatment takes place over two visits, planned around healing time.',
