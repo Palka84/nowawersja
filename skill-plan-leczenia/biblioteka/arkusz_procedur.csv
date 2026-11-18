@@ -1,0 +1,87 @@
+id,label,label PL,value,jaw/whole mouth related - do we show the teeth numbers in the description?,category_id,category_name,price_usd,price_eur,price_gbp,status,created_at,updated_at,Images,Image Upper Jaw,Image Lower Jaw,New Images,New Upper Jaw All-on-6,New Upper Jaw All-on-4,New Lower Jaw All-on-6,New Lower Jaw All-on-4,New Images – all teeth (folder)
+1,Medentika Implant (Straumann Group),Implant Medentika (grupa Straumann),Medentika Implant (Straumann Group),,1,Most Common,495,421,366,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+2,Zirconia Crown (Amann Girrbach / Ivoclar),Korona cyrkonowa (Amann Girrbach / Ivoclar),Zirconia Crown (Amann Girrbach / Ivoclar),,1,Most Common,235,200,174,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+3,Zirconia Crown on Implant (Amann Girrbach / Ivoclar),Korona cyrkonowa na implancie (Amann Girrbach / Ivoclar),Zirconia Crown on Implant (Amann Girrbach / Ivoclar),,1,Most Common,285,242,211,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+4,Fixed Temporary Prosthesis on Implants - Single Jaw,Stała proteza tymczasowa na implantach – jeden łuk,Fixed Temporary Prosthesis on Implants - Single Jaw,no,1,Most Common,495,421,366,,,,Upper / Lower Jaw,Open Upper Jaw,Open Lower Jaw,Upper / Lower Jaw,Open Upper All-on-6,Open Upper All-on-4,Open Lower All-on-6,Open Lower All-on-4,
+4a,12 crowns top of implants ( all on 6/ all on 4 ),12 koron na implantach (All-on-6 / All-on-4),,no,,,3420,2904,2532,,,,Upper / Lower Jaw,Open Upper Jaw,Open Lower Jaw,Upper / Lower Jaw,Open Upper All-on-6,Open Upper All-on-4,Open Lower All-on-6,Open Lower All-on-4,
+5,PMMA Temporary Crown - Per Tooth,Korona tymczasowa PMMA – jeden ząb,PMMA Temporary Crown - Per Tooth,,1,Most Common,35,30,26,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+6,Medentika Implant (Straumann Group) - Germany,Implant Medentika (grupa Straumann) – Niemcy,Medentika Implant (Straumann Group) - Germany,,2,Implants,495,421,366,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+7,Straumann Implant - Switzerland,Implant Straumann – Szwajcaria,Straumann Implant - Switzerland,,2,Implants,999,849,739,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+8,Neodent Zirconia Implant (Straumann Group),Implant cyrkonowy Neodent (grupa Straumann),Neodent Zirconia Implant (Straumann Group),,2,Implants,1399,1189,1035,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+9,Zygomatic Implant (Straumann) - Switzerland,Implant jarzmowy Straumann – Szwajcaria,Zygomatic Implant (Straumann) - Switzerland,,2,Implants,5695,4841,4214,,,,No Picture,,,No Picture,,,,,
+10,Old Implant Removal / Implant Extraction,Usunięcie wcześniej wszczepionego implantu,Old Implant Removal / Implant Extraction,,2,Implants,175,149,130,,,,No Picture,,,No Picture,,,,,
+11,Bone Grafting / Augmentation,Augmentacja kości (odbudowa kości),Bone Grafting / Augmentation,no,2,Implants,995,846,736,,,,Open image,,,No Picture,,,,,
+12,Sinus Lifting & Bone Grafting - One Side,Podniesienie dna zatoki szczękowej z augmentacją kości – jedna strona,Sinus Lifting & Bone Grafting - One Side,no,2,Implants,845,718,625,,,,Open image,,,Open image,,,,,
+13,Wide Sinus Lifting & Bone Grafting - One Side,Rozległe podniesienie dna zatoki szczękowej z augmentacją kości – jedna strona,Wide Sinus Lifting & Bone Grafting - One Side,no,2,Implants,1145,973,847,,,,Open image,,,Open image,,,,,
+14,Fixed Temporary Crown on Implant - Single Tooth,Stała korona tymczasowa na implancie – jeden ząb,Fixed Temporary Crown on Implant - Single Tooth,,2,Implants,65,55,48,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+15,Fixed Temporary Prosthesis on Implants - Single Jaw,Stała proteza tymczasowa na implantach – jeden łuk,Fixed Temporary Prosthesis on Implants - Single Jaw,no,2,Implants,495,421,366,,,,Upper / Lower Jaw,Open Upper Jaw,Open Lower Jaw,Upper / Lower Jaw,Open Upper All-on-6,Open Upper All-on-4,Open Lower All-on-6,Open Lower All-on-4,
+16,Abutment,Łącznik implantu,Abutment,,2,Implants,195,166,144,,,,No Picture,,,No Picture,,,,,
+17,Custom Abutment,Indywidualny łącznik implantu,Custom Abutment,,2,Implants,285,242,211,,,,No Picture,,,No Picture,,,,,
+18,Zirconia Abutment - Clinic Brands,Łącznik cyrkonowy – marki stosowane przez klinikę,Zirconia Abutment - Clinic Brands,,2,Implants,255,217,189,,,,No Picture,,,No Picture,,,,,
+19,Zirconia Abutment - Other Brands,Łącznik cyrkonowy – pozostałe marki,Zirconia Abutment - Other Brands,,2,Implants,395,336,292,,,,No Picture,,,No Picture,,,,,
+20,Locator Attachment,Element mocujący typu Locator,Locator Attachment,,2,Implants,245,208,181,,,,No Picture,,,No Picture,,,,,
+21,Monolithic Zirconia Crown on Implant - Amann Girrbach,Monolityczna korona cyrkonowa na implancie – Amann Girrbach,Monolithic Zirconia Crown on Implant - Amann Girrbach,,2,Implants,285,242,211,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+22,Monolithic Zirconia Crown on Implant - Ivoclar,Monolityczna korona cyrkonowa na implancie – Ivoclar,Monolithic Zirconia Crown on Implant - Ivoclar,,2,Implants,285,242,211,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+23,Overdenture Prosthesis - Single Jaw,Proteza nakładkowa (overdenture) – jeden łuk,Overdenture Prosthesis - Single Jaw,no,2,Implants,765,650,566,,,,No Picture,,,No Picture,,,,,
+24,Hybrid Implant-Supported Prosthesis - Single Jaw,Proteza hybrydowa na implantach – jeden łuk,Hybrid Implant-Supported Prosthesis - Single Jaw,no,2,Implants,3950,3358,2923,,,,Upper / Lower Jaw,Open Upper Jaw,Open Lower Jaw,Upper / Lower Jaw,Open Upper All-on-6,Open Upper All-on-4,Open Lower All-on-6,Open Lower All-on-4,
+25,Toronto Hybrid Prosthesis - Single Jaw,Proteza hybrydowa typu Toronto – jeden łuk,Toronto Hybrid Prosthesis - Single Jaw,no,2,Implants,4950,4208,3663,,,,Upper / Lower Jaw,Open Upper Jaw,Open Lower Jaw,Upper / Lower Jaw,Open Upper All-on-6,Open Upper All-on-4,Open Lower All-on-6,Open Lower All-on-4,
+26,Dental Mockup,Próbna wizualizacja uśmiechu (mock-up),Dental Mockup,,3,Restorations,219,186,162,,,,No Picture,,,No Picture,,,,,
+27,Post Core,Wkład koronowo-korzeniowy,Post Core,,3,Restorations,75,64,56,,,,No Picture,,,No Picture,,,,,
+28,Inlay / Onlay Restoration,Odbudowa protetyczna typu inlay / onlay,Inlay / Onlay Restoration,,3,Restorations,375,319,278,,,,No Picture,,,No Picture,,,,,
+29,Monolithic Zirconia Crown - Amann Girrbach,Monolityczna korona cyrkonowa – Amann Girrbach,Monolithic Zirconia Crown - Amann Girrbach,,3,Restorations,235,200,174,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+30,Monolithic Zirconia Crown - Ivoclar,Monolityczna korona cyrkonowa – Ivoclar,Monolithic Zirconia Crown - Ivoclar,,3,Restorations,235,200,174,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+31,Composite Veneer,Licówka kompozytowa,Composite Veneer,,3,Restorations,175,149,130,,,,No Picture,,,No Picture,,,,,
+32,Empress Veneer,Licówka ceramiczna Empress,Empress Veneer,,3,Restorations,495,421,366,,,,Open image,,,Open image (tooth 11),,,,,Open folder (20 teeth)
+33,Laminate Veneer (Lense),Licówka ceramiczna typu laminate (Lense),Laminate Veneer (Lense),,3,Restorations,495,421,366,,,,Open image,,,Open image (tooth 11),,,,,Open folder (20 teeth)
+34,Filling,Wypełnienie zęba,Filling,,3,Restorations,135,115,100,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+35,Aesthetic Composite Filling,Estetyczne wypełnienie kompozytowe,Aesthetic Composite Filling,,3,Restorations,145,123,107,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+36,Simple Extraction,Proste usunięcie zęba,Simple Extraction,,4,Surgery,35,30,26,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+37,Complex Extraction (Extraction-2),Złożone usunięcie zęba (ekstrakcja typu 2),Complex Extraction (Extraction-2),,4,Surgery,175,149,130,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+38,Surgical Extraction,Chirurgiczne usunięcie zęba,Surgical Extraction,,4,Surgery,395,336,292,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+39,Impacted Tooth Removal,Usunięcie zęba zatrzymanego,Impacted Tooth Removal,,4,Surgery,895,761,662,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+40,Alveoloplasty,Alweoloplastyka (plastyka wyrostka zębodołowego),Alveoloplasty,,4,Surgery,195,166,144,,,,No Picture,,,No Picture,,,,,
+41,Cyst Removal,Usunięcie torbieli,Cyst Removal,,4,Surgery,285,242,211,,,,No Picture,,,No Picture,,,,,
+42,Extended Cyst Removal,Rozległe usunięcie torbieli,Extended Cyst Removal,,4,Surgery,695,591,514,,,,No Picture,,,No Picture,,,,,
+43,Pulp Capping - Filling Included,Pokrycie miazgi zęba (z wypełnieniem),Pulp Capping - Filling Included,,5,Endodontics,155,132,115,,,,No Picture,,,No Picture,,,,,
+44,Expert Root Canal Treatment - Single Root Tooth,Specjalistyczne leczenie kanałowe zęba jednokorzeniowego,Expert Root Canal Treatment - Single Root Tooth,no,5,Endodontics,175,149,130,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+45,Expert Root Canal Treatment - Molar,Specjalistyczne leczenie kanałowe zęba trzonowego,Expert Root Canal Treatment - Molar,no,5,Endodontics,195,166,144,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+46,Expert Root Canal Retreatment - Single Root Tooth,Powtórne specjalistyczne leczenie kanałowe zęba jednokorzeniowego,Expert Root Canal Retreatment - Single Root Tooth,no,5,Endodontics,175,149,130,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+47,Expert Root Canal Retreatment - Molar,Powtórne specjalistyczne leczenie kanałowe zęba trzonowego,Expert Root Canal Retreatment - Molar,no,5,Endodontics,195,166,144,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+48,MTA,Zastosowanie cementu MTA,MTA,,5,Endodontics,135,115,100,,,,No Picture,,,No Picture,,,,,
+49,Apical Resection,Resekcja wierzchołka korzenia zęba,Apical Resection,,5,Endodontics,345,293,255,,,,No Picture,,,No Picture,,,,,
+50,Open folder (32 teeth),Most adhezyjny typu Maryland,Maryland Bridge,,6,Prosthodontics,795,676,588,,,,Open image,,,Open image (tooth 11),,,,,"Open folder (abutment + pontic, 32 teeth each)"
+51,PMMA Temporary Crown - Per Tooth,Korona tymczasowa PMMA – jeden ząb,PMMA Temporary Crown - Per Tooth,,6,Prosthodontics,35,30,26,,,,Open image,,,Open image (tooth 36),,,,,Open folder (32 teeth)
+52,Temporary Removable Complete Denture - Single Jaw,Tymczasowa całkowita proteza ruchoma – jeden łuk,Temporary Removable Complete Denture - Single Jaw,,6,Prosthodontics,345,293,255,,,,No Picture,,,No Picture,,,,,
+53,Partial Removable Denture - Single Jaw,Częściowa proteza ruchoma – jeden łuk,Partial Removable Denture - Single Jaw,,6,Prosthodontics,895,761,662,,,,No Picture,,,No Picture,,,,,
+54,Permanent Complete Denture - Single Jaw,Ostateczna całkowita proteza ruchoma – jeden łuk,Permanent Complete Denture - Single Jaw,,6,Prosthodontics,995,846,736,,,,No Picture,,,No Picture,,,,,
+55,Roche Prosthesis,Proteza Roche (nazwa stosowana w cenniku kliniki),Roche Prosthesis,,6,Prosthodontics,245,208,181,,,,No Picture,,,No Picture,,,,,
+56,Metal Braces / Conventional Orthodontics,Aparat ortodontyczny metalowy – leczenie tradycyjne,Metal Braces / Conventional Orthodontics,,7,Orthodontics,2850,2423,2109,,,,No Picture,,,No Picture,,,,,
+57,Porcelain Braces,Aparat ortodontyczny ceramiczny,Porcelain Braces,,7,Orthodontics,3850,3273,2849,,,,No Picture,,,No Picture,,,,,
+58,Invisalign Orthodontics,Leczenie ortodontyczne nakładkami Invisalign,Invisalign Orthodontics,,7,Orthodontics,4950,4208,3663,,,,No Picture,,,No Picture,,,,,
+59,Removable Retainer,Ruchomy aparat retencyjny,Removable Retainer,,7,Orthodontics,99,84,73,,,,No Picture,,,No Picture,,,,,
+60,Gum Depigmentation,Usuwanie przebarwień dziąseł (depigmentacja),Gum Depigmentation,,8,Periodontology & Gum Treatments,2590,2202,1917,,,,No Picture,,,No Picture,,,,,
+61,Gingivectomy - Single Tooth,Gingiwektomia – jeden ząb,Gingivectomy - Single Tooth,,8,Periodontology & Gum Treatments,75,64,56,,,,No Picture,,,No Picture,,,,,
+62,Gingivoplasty,Gingiwoplastyka (plastyka dziąseł),Gingivoplasty,no,8,Periodontology & Gum Treatments,85,72,63,,,,No Picture,,,No Picture,,,,,
+63,Partial Gingival Curettage,Częściowy kiretaż dziąsłowy,Partial Gingival Curettage,,8,Periodontology & Gum Treatments,245,208,181,,,,No Picture,,,No Picture,,,,,
+64,Full-Jaw Gingival Curettage,Kiretaż dziąsłowy całego łuku,Full-Jaw Gingival Curettage,,8,Periodontology & Gum Treatments,495,421,366,,,,No Picture,,,No Picture,,,,,
+65,Free Gingival Graft (FGG),Wolny przeszczep dziąsła (FGG),Free Gingival Graft (FGG),,8,Periodontology & Gum Treatments,459,390,340,,,,No Picture,,,No Picture,,,,,
+66,Gum Graft,Przeszczep dziąsła,Gum Graft,,8,Periodontology & Gum Treatments,675,574,500,,,,No Picture,,,No Picture,,,,,
+67,Regenerative Periodontal Treatment with Emdogain,Regeneracyjne leczenie przyzębia preparatem Emdogain,Regenerative Periodontal Treatment with Emdogain,,8,Periodontology & Gum Treatments,1799,1529,1331,,,,No Picture,,,No Picture,,,,,
+68,Dental Cleaning,Profesjonalne oczyszczanie zębów,Dental Cleaning,,9,Hygiene & Prevention,95,81,70,,,,No Picture,,,No Picture,,,,,
+69,Double Session Dental Cleaning,Profesjonalne oczyszczanie zębów – dwie sesje,Double Session Dental Cleaning,,9,Hygiene & Prevention,125,106,93,,,,No Picture,,,No Picture,,,,,
+70,Fluoride Gel Application,Aplikacja żelu fluorkowego,Fluoride Gel Application,,9,Hygiene & Prevention,285,242,211,,,,No Picture,,,No Picture,,,,,
+71,Beyond Whitening,Wybielanie zębów systemem BEYOND,Beyond Whitening,,9,Hygiene & Prevention,285,242,211,,,,No Picture,,,No Picture,,,,,
+72,Internal Bleaching - Per Tooth,Wybielanie wewnętrzne zęba – jeden ząb,Internal Bleaching - Per Tooth,,9,Hygiene & Prevention,135,115,100,,,,No Picture,,,No Picture,,,,,
+73,Soft Night Guard,Miękka szyna nocna,Soft Night Guard,no,10,Night Guards & Bite Protection,125,106,93,,,,No Picture,,,No Picture,,,,,
+74,Night Guard with Canine Protection,Szyna nocna z ochroną kłów,Night Guard with Canine Protection,no,10,Night Guards & Bite Protection,245,208,181,,,,No Picture,,,No Picture,,,,,
+75,Boxing Mouthguard,Ochraniacz na zęby do boksu,Boxing Mouthguard,,10,Night Guards & Bite Protection,795,676,588,,,,No Picture,,,No Picture,,,,,
+76,Milk Tooth Extraction,Usunięcie zęba mlecznego,Milk Tooth Extraction,,11,Pediatric Dentistry,70,60,52,,,,Open image,,,Open image (tooth 75),,,,,Open folder (20 teeth)
+77,Pulp Amputation / Milk Tooth Root Canal Treatment,Amputacja miazgi / leczenie kanałowe zęba mlecznego,Pulp Amputation / Milk Tooth Root Canal Treatment,,11,Pediatric Dentistry,165,140,122,,,,No Picture,,,No Picture,,,,,
+78,Space Maintainer,Utrzymywacz przestrzeni,Space Maintainer,,11,Pediatric Dentistry,245,208,181,,,,No Picture,,,No Picture,,,,,
+79,Stainless Steel Crown for Children,Korona stalowa na ząb mleczny,Stainless Steel Crown for Children,,11,Pediatric Dentistry,135,115,100,,,,No Picture,,,No Picture,,,,,
+80,Zirconia Crown for Children,Korona cyrkonowa dla dzieci,Zirconia Crown for Children,,11,Pediatric Dentistry,145,123,107,,,,No Picture,,,No Picture,,,,,
+81,Sedation,Sedacja,Sedation,,12,Sedation & Anaesthesia,695,591,514,,,,No Picture,,,No Picture,,,,,
+82,General Anaesthesia,Znieczulenie ogólne,General Anaesthesia,,12,Sedation & Anaesthesia,1350,1148,999,,,,No Picture,,,No Picture,,,,,
+83,General Anaesthesia for Children,Znieczulenie ogólne u dzieci,General Anaesthesia for Children,,12,Sedation & Anaesthesia,1150,978,851,,,,No Picture,,,No Picture,,,,,
+84,Masseter Botox,Podanie toksyny botulinowej do mięśni żwaczy,Masseter Botox,,13,Facial Aesthetics,345,293,255,,,,No Picture,,,No Picture,,,,,
+85,Gold Tooth Crafting (+ Gold Fee),Wykonanie złotego zęba (koszt złota dodatkowo),Gold Tooth Crafting (+ Gold Fee),,14,Other Treatments,245,208,181,,,,No Picture,,,No Picture,,,,,

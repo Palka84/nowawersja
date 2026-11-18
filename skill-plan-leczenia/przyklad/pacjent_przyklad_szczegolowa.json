@@ -1,0 +1,151 @@
+{
+  "pacjent": "Jan Kowalski",
+  "data": "17 lis 2026",
+  "wazna_do": "17 gru 2026",
+  "koordynator": "Paulina Ayla",
+  "szczegolowa": true,
+  "opis": "Leczenie odbywa się w dwóch wizytach, zaplanowanych z uwzględnieniem czasu gojenia. Podczas wizyty I wszczepiamy 2 implanty Medentika by Straumann (Niemcy) w szczęce po prawej stronie, w miejscu zębów 14 i 15. Po około 3 miesiącach gojenia wykonujemy ostateczną odbudowę: korony cyrkonowe Amann Girrbach lub Ivoclar na implantach 14 i 15.",
+  "wizyty": [
+    {
+      "tytul": "Wizyta I — leczenie implantologiczne",
+      "krotko": "wizyta I",
+      "pobyt": "3 dni / 2 noce",
+      "schemat": "schemat_wizyta1.jpg",
+      "pozycje": [
+        {
+          "luk": "Szczęka górna",
+          "opis": "Implant Medentika by Straumann (Niemcy) · zęby 14, 15",
+          "ilosc": "2×"
+        }
+      ],
+      "koszt": "€1 402,00",
+      "koszt_leczenia": {
+        "wiersze": [
+          [
+            "Implant Medentika by Straumann (Niemcy) · zęby 14, 15",
+            "2",
+            "421 EUR",
+            "842 EUR"
+          ]
+        ],
+        "suma": [
+          "Leczenie stomatologiczne — wizyta I",
+          "842 EUR"
+        ]
+      },
+      "koszty_organizacyjne": {
+        "wiersze": [
+          [
+            "Transfery lotnisko – hotel – klinika – hotel – lotnisko",
+            "1",
+            "240 EUR",
+            "240 EUR"
+          ],
+          [
+            "Zakwaterowanie (hotel)",
+            "2 noce",
+            "60 EUR",
+            "120 EUR"
+          ],
+          [
+            "Opieka polskojęzycznego koordynatora i tłumaczenie",
+            "1",
+            "200 EUR",
+            "200 EUR"
+          ]
+        ],
+        "suma": [
+          "Koszty organizacyjne — wizyta I",
+          "560 EUR"
+        ]
+      }
+    },
+    {
+      "tytul": "Wizyta II — ostateczna odbudowa protetyczna",
+      "krotko": "wizyta II",
+      "pobyt": "4 dni / 4 noce",
+      "schemat": "schemat_wizyta2.jpg",
+      "pozycje": [
+        {
+          "luk": "Szczęka górna",
+          "opis": "Korona cyrkonowa Amann Girrbach lub Ivoclar na implancie · zęby 14, 15",
+          "ilosc": "2×"
+        }
+      ],
+      "koszt": "€1 164,00",
+      "koszt_leczenia": {
+        "wiersze": [
+          [
+            "Korona cyrkonowa Amann Girrbach lub Ivoclar na implancie · zęby 14, 15",
+            "2",
+            "242 EUR",
+            "484 EUR"
+          ]
+        ],
+        "suma": [
+          "Leczenie stomatologiczne — wizyta II",
+          "484 EUR"
+        ]
+      },
+      "koszty_organizacyjne": {
+        "wiersze": [
+          [
+            "Transfery lotnisko – hotel – klinika – hotel – lotnisko",
+            "1",
+            "240 EUR",
+            "240 EUR"
+          ],
+          [
+            "Zakwaterowanie (hotel)",
+            "4 noce",
+            "60 EUR",
+            "240 EUR"
+          ],
+          [
+            "Opieka polskojęzycznego koordynatora i tłumaczenie",
+            "1",
+            "200 EUR",
+            "200 EUR"
+          ]
+        ],
+        "suma": [
+          "Koszty organizacyjne — wizyta II",
+          "680 EUR"
+        ]
+      }
+    }
+  ],
+  "os_czasu": [
+    [
+      "Wizyta I",
+      "3 dni / 2 noce"
+    ],
+    [
+      "Gojenie",
+      "ok. 3 mies."
+    ],
+    [
+      "Wizyta II",
+      "4 dni / 4 noce"
+    ]
+  ],
+  "platnosci": {
+    "wiersze": [
+      [
+        "Wizyta I — 3 dni / 2 noce",
+        "€1 402,00",
+        "€320,00",
+        "€1 082,00"
+      ],
+      [
+        "Wizyta II — 4 dni / 4 noce",
+        "€1 164,00",
+        "€440,00",
+        "€724,00"
+      ]
+    ],
+    "razem": "€2 566,00"
+  },
+  "rabat_html": "<b>Twoja zniżka</b><span>Cena regularna leczenia według cennika kliniki: <s>1 870 EUR</s> · zniżka ok. 30% (544 EUR) · cena leczenia po zniżce: <b>1 326 EUR</b>.</span>",
+  "dodatkowe_informacje": []
+}
