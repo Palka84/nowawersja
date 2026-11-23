@@ -205,6 +205,8 @@ T = {
 }
 
 EXTRA_CSS = """
+.opt-h{font-family:var(--font-display);font-size:21px;color:#0B1220;background:#E9FBFA;border-left:4px solid var(--cyan);padding:12px 16px;margin:28px 0 18px;}
+.opt-p{color:#0B1220;margin:-8px 0 16px;}
 .dt-h{font-family:var(--font-display);color:var(--navy);font-size:17px;margin:30px 0 10px;}
 .dt{width:100%;border-collapse:collapse;font-size:14px;}
 .dt th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#3A4256;border-bottom:2px solid var(--cyan);padding:8px 6px;}
@@ -305,7 +307,17 @@ def build(lang, imgs):
             h += tbl(f'Koszty organizacyjne — {v["krotko"]}', ['Pozycja','Ilość','Cena jedn.','Łącznie'], o['wiersze'], o['suma'])
         h += f'<div class="stage-cost"><span>{t["stage_cost"]}</span><b>{v["koszt"]}</b></div>'
         return h
-    PLAN = ''.join(visit_html(i, v) for i, v in enumerate(P['wizyty']))
+    if P.get('opcje'):
+        PLAN = ''
+        for o in P['opcje']:
+            PLAN += f'<h3 class="opt-h">{o["nazwa"]}</h3>'
+            if o.get('opis'): PLAN += f'<p class="opt-p">{o["opis"]}</p>'
+            PLAN += ''.join(visit_html(i, v) for i, v in o['_wiz'])
+    else:
+        PLAN = ''.join(visit_html(i, v) for i, v in enumerate(P['wizyty']))
+    _tot = P['platnosci']['razem'] if isinstance(P['platnosci']['razem'], list) else [(t['total_l'], P['platnosci']['razem'])]
+    _st = ' style="margin-top:12px;"'
+    TOTALS = ''.join('<div class="total"' + (_st if k else '') + f'><span>{a}</span><b>{b}</b></div>' for k, (a, b) in enumerate(_tot))
     PLAN += '<div class="timeline">' + ''.join(f'<div class="tl"><i></i><b>{a}</b><span>{b}</span></div>' for a, b in P['os_czasu']) + '</div>'
     if P.get('rabat_html'):
         PLAN += f'<div class="disc">{P["rabat_html"]}</div>'
@@ -334,7 +346,7 @@ def build(lang, imgs):
   <span class="tag">{t['price_tag']}</span>
   <h2>{t['price_h2']}</h2>
   <table class="pay"><tr>{''.join(f'<th>{h}</th>' for h in t['th'])}</tr>{rows}</table>
-  <div class="total"><span>{t['total_l']}</span><b>{t['total']}</b></div>
+  {TOTALS}
   <p class="note">{t['dep_note']}</p>
   <div class="info-box"><h3>{t['info_h']}</h3><ul>{info}</ul></div>
   <h3 class="next-h">{t['next_h']}</h3>
@@ -438,13 +450,21 @@ t['meta'] = [('Klinika', 'Esnan Skyland'), ('Przygotowano dla', CASE), ('Koordyn
              ('Data', P['data']), ('Oferta ważna do', P['wazna_do'])]
 t['plan_intro'] = P['opis']
 t['rows'] = [tuple(r) for r in P['platnosci']['wiersze']]
-t['total'] = P['platnosci']['razem']
+if P['platnosci'].get('naglowki'): t['th'] = P['platnosci']['naglowki']
+t['total'] = P['platnosci']['razem'] if isinstance(P['platnosci']['razem'], str) else ''
 if P.get('dodatkowe_informacje'):
     t['info'] = t['info'] + P['dodatkowe_informacje']
 imgs = {0: uri('00.png')}
 for k in [1,2,3,4,9,10,11,12,14]: imgs[k] = uri(f'{k:02d}.jpg')
 for c in ['cert_img_p4_0','cert_img_p5_0','cert_img_p5_1','yt_sFxOVJNxHsE','yt_o89SVaGqhac','yt_TG6kRoWFYkg']: imgs[c] = uri(c + '.jpg')
-for i, v in enumerate(P['wizyty']): imgs['chart_%d' % i] = uri(v['schemat'], PJDIR)
+if P.get('opcje'):
+    k = 0
+    for o in P['opcje']:
+        o['_wiz'] = []
+        for v in o['wizyty']:
+            o['_wiz'].append((k, v)); imgs['chart_%d' % k] = uri(v['schemat'], PJDIR); k += 1
+else:
+    for i, v in enumerate(P['wizyty']): imgs['chart_%d' % i] = uri(v['schemat'], PJDIR)
 os.makedirs(OUT, exist_ok=True)
 p = os.path.join(OUT, 'oferta-esnan-pl-' + CASE.replace(' ', '-') + '.html')
 open(p, 'w', encoding='utf-8').write(build('pl', imgs))
