@@ -52,12 +52,13 @@ T = {
   cta_b='Gotowy na pierwszy krok?', cta_s='Zaakceptuj plan i wybierz termin — termin zawsze potwierdzamy z Tobą.',
   cta_q='Mam pytania — napisz do koordynatora',
   war_tag='Gwarancja', war_h2='Dowody, nie <span class="accent">obietnice</span>',
-  war_lead='Każdy implant posiada Paszport implantu — oficjalny zapis marki, modelu i numeru seryjnego implantu umieszczonego w Twojej jamie ustnej. To dowód autentyczności i dokument, którego każdy przyszły dentysta będzie potrzebował do dalszej opieki.',
-  pkg_h='Pakiet Standard', pkg_s='Warunki gwarancji',
-  pkg=['Dożywotnia gwarancja producenta implantów na wady materiałowe i produkcyjne',
-       '5 lat gwarancji kliniki na wszystkie prace stomatologiczne',
+  war_lead='Po leczeniu otrzymujesz imienny Certyfikat Gwarancyjny kliniki Esnan, ważny 10 lat od daty wydania. Każdy implant ma dodatkowo Paszport implantu — oficjalny zapis marki, modelu i numeru seryjnego implantu. To dowód autentyczności i dokument, którego każdy przyszły dentysta będzie potrzebował do dalszej opieki.',
+  pkg_h='Gwarancja 10 lat', pkg_s='Warunki gwarancji',
+  pkg=['10 lat gwarancji kliniki Esnan — imienny Certyfikat Gwarancyjny z datą wydania i datą ważności, podpisany przez klinikę',
+       'Korony cyrkonowe Amann Girrbach (Zolid): 10 lat gwarancji producenta — certyfikat potwierdza oryginalny materiał wyprodukowany w Austrii zgodnie z EN ISO 13485:2016 i MDR 2017/745',
+       'Implanty: dożywotnia gwarancja producenta na wady materiałowe i produkcyjne',
        '2 lata opieki pozabiegowej Fly4Smile'],
-  pkg_note='Szczegółowe warunki gwarancji określa klinika.',
+  pkg_note='Zakres i wyłączenia gwarancji: esnandentalclinics.com/warranty (również pod kodem QR na certyfikacie).',
   about_tag='O klinice', about_h2='Esnan Dental Clinics — Skyland',
   maps='Zobacz klinikę i opinie pacjentów w Google Maps ↗',
   stats=[('2007', 'rok założenia sieci Esnan'), ('1,2 mln', 'pacjentów od 2007 r.'), ('JCI', 'międzynarodowa akredytacja jakości')],
@@ -262,6 +263,8 @@ def build(lang, imgs):
     css = re.search(r'<style>(.*?)</style>', src, re.S).group(1)
     css = css.replace('@media print{.btn{display:none;} body{font-size:13px;} .section{break-inside:avoid;}}', '')
     css += EXTRA_CSS
+    if (P.get('gwarancja') or {}).get('obraz'):
+        css += '.passport{padding:10px !important;}.passport img{width:100% !important;height:auto !important;max-height:none !important;max-width:100% !important;}'
     svg = re.search(r'(<svg viewBox="0 0 760 250".*?</svg>)', src, re.S).group(1)
     svg = svg.replace('ok. 7 km autem', t['km']).replace('approx. 7 km by car', t['km'])
     maps_icon = re.search(r'(<svg viewBox="0 0 24 24".*?</svg>)', src, re.S).group(1)
@@ -449,6 +452,9 @@ t['wa_q'] = f'Dzień dobry, mam pytanie do mojego planu leczenia ({CASE}).'
 t['meta'] = [('Klinika', 'Esnan Skyland'), ('Przygotowano dla', CASE), ('Koordynator', P.get('koordynator', 'Paulina Ayla')),
              ('Data', P['data']), ('Oferta ważna do', P['wazna_do'])]
 t['plan_intro'] = P['opis']
+G = P.get('gwarancja') or {}
+for k_json, k_t in (('lead', 'war_lead'), ('naglowek', 'pkg_h'), ('podtytul', 'pkg_s'), ('punkty', 'pkg'), ('uwaga', 'pkg_note'), ('opis_obrazu', 'passport_alt')):
+    if k_json in G: t[k_t] = G[k_json]
 if P.get('naglowek_planu'): t['plan_h2'] = P['naglowek_planu']
 if P.get('podtytul'): t['sub'] = P['podtytul']
 t['rows'] = [tuple(r) for r in P['platnosci']['wiersze']]
@@ -458,6 +464,7 @@ if P.get('dodatkowe_informacje'):
     t['info'] = t['info'] + P['dodatkowe_informacje']
 imgs = {0: uri('00.png')}
 for k in [1,2,3,4,9,10,11,12,14]: imgs[k] = uri(f'{k:02d}.jpg')
+if G.get('obraz'): imgs[9] = uri(G['obraz'], PJDIR if not os.path.exists(os.path.join(IMG, G['obraz'])) else IMG)
 for c in ['cert_img_p4_0','cert_img_p5_0','cert_img_p5_1','yt_sFxOVJNxHsE','yt_o89SVaGqhac','yt_TG6kRoWFYkg']: imgs[c] = uri(c + '.jpg')
 if P.get('opcje'):
     k = 0
