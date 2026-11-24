@@ -206,6 +206,11 @@ T = {
 }
 
 EXTRA_CSS = """
+.pay .pay-sum td{border-top:2px solid var(--cyan);border-bottom:none;color:var(--cyan);font-weight:800;}
+.pay-note{margin-top:12px;border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:6px 16px;}
+.pay-note div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;font-family:var(--font-display);color:#fff;font-size:14px;}
+.pay-note div+div{border-top:1px solid rgba(255,255,255,.14);}
+.pay-note b{white-space:nowrap;color:var(--cyan);}
 .dtw{background:#fff;border-radius:14px;padding:16px 14px;margin:6px 0 26px;}.dtw .dt-h{margin-top:0;}
 .dt .dt-v td{background:#E9FBFA;font-weight:700;color:var(--navy);text-align:left !important;}.dt .dt-all td{font-size:16px;border-top:2px solid var(--cyan);}
 .opt-h{font-family:var(--font-display);font-size:21px;color:#0B1220;background:#E9FBFA;border-left:4px solid var(--cyan);padding:12px 16px;margin:28px 0 18px;}
@@ -280,6 +285,18 @@ def build(lang, imgs):
     meta = ''.join(f'<div{" class=\"valid\"" if i == 4 else ""}><span>{k}</span>{v}</div>' for i, (k, v) in enumerate(t['meta']))
     item = lambda jaw, txt, q: f'<div class="item"><div><small>{jaw}</small>{txt}</div><div class="q">{q}</div></div>'
     rows = ''.join(f'<tr><td>{a}</td><td>{b}</td><td>{c}</td><td>{d}</td></tr>' for a, b, c, d in t['rows'])
+    def _num(x): return float(x.replace('€', '').replace('EUR', '').replace('\xa0', '').replace(' ', '').replace(',', '.'))
+    def _fmt(v):
+        s_ = f'{v:,.2f}'.replace(',', ' ').replace('.', ',')
+        return '€' + s_
+    SUMNOTE = ''
+    if not P.get('opcje') and len(t['rows']) > 1:
+        _k = sum(_num(r[1]) for r in t['rows']); _z = sum(_num(r[2]) for r in t['rows']); _m = sum(_num(r[3]) for r in t['rows'])
+        rows += f'<tr class="pay-sum"><td>Razem</td><td>{_fmt(_k)}</td><td>{_fmt(_z)}</td><td>{_fmt(_m)}</td></tr>'
+    if not P.get('opcje'):
+        _z = sum(_num(r[2]) for r in t['rows']); _m = sum(_num(r[3]) for r in t['rows'])
+        SUMNOTE = (f'<div class="pay-note"><div><span>Zaliczki łącznie</span><b>{_fmt(_z)}</b></div>'
+                   f'<div><span>Na miejscu łącznie — cena leczenia po zniżce</span><b>{_fmt(_m)}</b></div></div>')
     info = ''.join(f'<li>{x}</li>' for x in t['info'])
     steps = ''.join(f'<div class="step"><i>{n}</i><b>{h}</b><span>{p}</span></div>' for n, (h, p) in enumerate(t['steps'], 1))
     pkg = ''.join(f'<div class="row">{x}</div>' for x in t['pkg'])
@@ -365,6 +382,7 @@ def build(lang, imgs):
   {FULL}
   <table class="pay"><tr>{''.join(f'<th>{h}</th>' for h in t['th'])}</tr>{rows}</table>
   {TOTALS}
+  {SUMNOTE}
   <p class="note">{t['dep_note']}</p>
   <div class="info-box"><h3>{t['info_h']}</h3><ul>{info}</ul></div>
   <h3 class="next-h">{t['next_h']}</h3>
