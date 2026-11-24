@@ -4,7 +4,7 @@
 - Cennik Esnan z 19.06.2026 obowiązuje, dopóki Paulina go nie zmieni.
 - Pliki: `cennik/Esnan_cennik_2026-06-19.pdf` (oryginał) i `cennik/Esnan_cennik_2026-06-19.csv` (te same dane w tabeli).
 - Ceny wyjściowe to zawsze ceny promocyjne w EUR (kolumna `cena_promocyjna_eur`). Liczysz od nich kalkulacje, podajesz je w planach i od nich liczysz obniżki (np. −10% z 200 na 180 EUR).
-- Cen regularnych używaj tylko w podsumowaniu rabatu.
+- Cen regularnych używaj tylko w podsumowaniu rabatu. W ramce rabatu podawaj pełne kwoty z transferami: cena regularna leczenia + transfery → zniżka → płatność w klinice po zniżce, równa sumie „na miejscu” z tabeli płatności.
 - Jeśli zabiegu nie ma w cenniku, nie zgaduj ceny. Zapytaj.
 
 Najczęściej używane ceny promocyjne (EUR):

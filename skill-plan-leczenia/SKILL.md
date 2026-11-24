@@ -101,6 +101,7 @@ razem                    = Σ koszt_wizyty
 Przykład (2 implanty, potem 2 korony na implantach): wizyta I: klinika 842 + 240 = 1082; hotel 2 × 60 = 120; koordynator 200 → zaliczka 320, razem 1402. Wizyta II: klinika 484 + 240 = 724; hotel 4 × 60 = 240; koordynator 200 → zaliczka 440, razem 1164. Łącznie 2566 EUR.
 
 ### 3.4 Rabat
+- Kwoty w ramce rabatu muszą się zgadzać z tabelą płatności: cena regularna **z transferami** → zniżka → **płatność w klinice po zniżce = suma „na miejscu”** (np. 12 491 → −3 515 → 8 976 EUR). Nie podawać samej ceny leczenia bez transferów.
 - Pokazujemy **raz**, na końcu, a nie w każdym wierszu: cena regularna (z cennika/kliniki), zniżka zaokrąglona do ~30%, jeśli tak wynika z dokumentu, dokładna kwota zniżki, cena po zniżce.
 - Obniżka zlecona przez Paulinę (np. −10% na korony) – osobna informacja: „Cena korony … została obniżona z 200 EUR na 180 EUR” + ile to daje łącznie.
 
