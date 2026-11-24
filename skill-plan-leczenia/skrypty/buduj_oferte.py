@@ -206,6 +206,8 @@ T = {
 }
 
 EXTRA_CSS = """
+.dtw{background:#fff;border-radius:14px;padding:16px 14px;margin:6px 0 26px;}.dtw .dt-h{margin-top:0;}
+.dt .dt-v td{background:#E9FBFA;font-weight:700;color:var(--navy);text-align:left !important;}.dt .dt-all td{font-size:16px;border-top:2px solid var(--cyan);}
 .opt-h{font-family:var(--font-display);font-size:21px;color:#0B1220;background:#E9FBFA;border-left:4px solid var(--cyan);padding:12px 16px;margin:28px 0 18px;}
 .opt-p{color:#0B1220;margin:-8px 0 16px;}
 .dt-h{font-family:var(--font-display);color:var(--navy);font-size:17px;margin:30px 0 10px;}
@@ -320,6 +322,18 @@ def build(lang, imgs):
         PLAN = ''.join(visit_html(i, v) for i, v in enumerate(P['wizyty']))
     _tot = P['platnosci']['razem'] if isinstance(P['platnosci']['razem'], list) else [(t['total_l'], P['platnosci']['razem'])]
     _st = ' style="margin-top:12px;"'
+    FULL = ''
+    if P.get('szczegolowa'):
+        _wl = [v for _, v in sum((o['_wiz'] for o in P['opcje']), [])] if P.get('opcje') else P['wizyty']
+        _r = ''
+        for v in _wl:
+            _r += f'<tr class="dt-v"><td colspan="4">{v["tytul"]} · {v["pobyt"]}</td></tr>'
+            for r in v['koszt_leczenia']['wiersze'] + v['koszty_organizacyjne']['wiersze']:
+                _r += '<tr>' + ''.join(f'<td>{c}</td>' for c in r) + '</tr>'
+            _r += f'<tr class="dt-sum"><td colspan="3">Razem — {v["krotko"]}</td><td>{v["koszt"]}</td></tr>'
+        if not P.get('opcje'):
+            _r += f'<tr class="dt-sum dt-all"><td colspan="3">Całkowity koszt leczenia i pobytu</td><td>{t["total"]}</td></tr>'
+        FULL = ('<div class="dtw"><h4 class="dt-h">Szczegółowa wycena — wszystkie pozycje</h4><table class="dt"><tr><th>Pozycja</th><th>Ilość</th><th>Cena jedn.</th><th>Łącznie</th></tr>' + _r + '</table></div>')
     TOTALS = ''.join('<div class="total"' + (_st if k else '') + f'><span>{a}</span><b>{b}</b></div>' for k, (a, b) in enumerate(_tot))
     PLAN += '<div class="timeline">' + ''.join(f'<div class="tl"><i></i><b>{a}</b><span>{b}</span></div>' for a, b in P['os_czasu']) + '</div>'
     if P.get('rabat_html'):
@@ -348,6 +362,7 @@ def build(lang, imgs):
 <div class="section dark" id="sec-pricing"><div class="wrap">
   <span class="tag">{t['price_tag']}</span>
   <h2>{t['price_h2']}</h2>
+  {FULL}
   <table class="pay"><tr>{''.join(f'<th>{h}</th>' for h in t['th'])}</tr>{rows}</table>
   {TOTALS}
   <p class="note">{t['dep_note']}</p>
@@ -455,6 +470,7 @@ t['plan_intro'] = P['opis']
 G = P.get('gwarancja') or {}
 for k_json, k_t in (('lead', 'war_lead'), ('naglowek', 'pkg_h'), ('podtytul', 'pkg_s'), ('punkty', 'pkg'), ('uwaga', 'pkg_note'), ('opis_obrazu', 'passport_alt')):
     if k_json in G: t[k_t] = G[k_json]
+if P.get('szczegolowa'): t['plan_h2'] = 'Szczegółowy <span class="accent">plan leczenia</span>'
 if P.get('naglowek_planu'): t['plan_h2'] = P['naglowek_planu']
 if P.get('podtytul'): t['sub'] = P['podtytul']
 t['rows'] = [tuple(r) for r in P['platnosci']['wiersze']]
