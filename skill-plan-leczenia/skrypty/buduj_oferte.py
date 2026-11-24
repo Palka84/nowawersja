@@ -449,6 +449,8 @@ t['wa_q'] = f'Dzień dobry, mam pytanie do mojego planu leczenia ({CASE}).'
 t['meta'] = [('Klinika', 'Esnan Skyland'), ('Przygotowano dla', CASE), ('Koordynator', P.get('koordynator', 'Paulina Ayla')),
              ('Data', P['data']), ('Oferta ważna do', P['wazna_do'])]
 t['plan_intro'] = P['opis']
+if P.get('naglowek_planu'): t['plan_h2'] = P['naglowek_planu']
+if P.get('podtytul'): t['sub'] = P['podtytul']
 t['rows'] = [tuple(r) for r in P['platnosci']['wiersze']]
 if P['platnosci'].get('naglowki'): t['th'] = P['platnosci']['naglowki']
 t['total'] = P['platnosci']['razem'] if isinstance(P['platnosci']['razem'], str) else ''

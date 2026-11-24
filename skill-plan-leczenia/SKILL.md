@@ -171,6 +171,7 @@ Na miejscu gotówką lub fizyczną kartą; transakcje kartą w TRY, opłata oper
 | `opis` | wstęp planu – z numerami zębów |
 | `wizyty[]` | `tytul`, `krotko` (np. „wizyta I”), `pobyt` („3 dni / 2 noce”), `schemat` (ścieżka JPG schematu, względna do JSON), `pozycje[]` (`luk`: Szczęka górna / Żuchwa / Dodatkowo, `opis`, `ilosc`: „2×”), `koszt`; dla szczegółowej: `koszt_leczenia` i `koszty_organizacyjne` (`wiersze` [zabieg, ilość, cena jedn., łącznie], `suma` [etykieta, kwota]) |
 | `opcje[]` | zamiast `wizyty`, gdy oferta ma kilka opcji: `nazwa`, opcjonalnie `opis`, `wizyty[]` (jak wyżej); wtedy `platnosci.naglowki` = ["Opcja / wizyta", …], a `platnosci.razem` = lista [etykieta, kwota] – jedna suma na opcję |
+| `naglowek_planu`, `podtytul` | opcjonalnie – np. „Protetyczny plan leczenia”, gdy nie ma implantów |
 | `os_czasu` | np. [["Wizyta I","3 dni / 2 noce"],["Gojenie","ok. 3 mies."],["Wizyta II","4 dni / 4 noce"]] |
 | `platnosci` | `wiersze` [wizyta, koszt, zaliczka, na miejscu], `razem` |
 | `rabat_html` | opcjonalnie blok rabatu (pokazywany raz) |
