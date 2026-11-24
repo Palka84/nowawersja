@@ -24,6 +24,10 @@ Najczęściej używane ceny promocyjne (EUR):
 
 Terminologia kliniki (wg Pauliny): Empress Veneer = pełna korona porcelanowa (Empress), Laminate Veneer = licówka (tylko przednia część zęba). Obie po 421 EUR. Zapis kliniki „laminate/empress veneers” = licówki, a tam gdzie potrzeba (np. most) korony Empress. W ofertach pisz „korona porcelanowa Empress” i „licówka porcelanowa Laminate Veneer”.
 
+## Koordynator
+- Koordynator anglojęzyczny = 0 EUR za koordynatora (zaliczka = sam hotel). W ofercie piszemy „opieka anglojęzycznego koordynatora”, a w nocie o zaliczce tylko „Zaliczka obejmuje zakwaterowanie…”.
+- Polskojęzyczny: 300 EUR, gdy płatność w klinice za wizytę > 2500 EUR, w przeciwnym razie 200 EUR, chyba że Paulina poda inaczej.
+
 ## Nazewnictwo
 Zawsze pisz „korony cyrkonowe Amann Girrbach lub Ivoclar”, także w podsumowaniach i tabelach.
 

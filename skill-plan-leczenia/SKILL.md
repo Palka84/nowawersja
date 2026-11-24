@@ -82,7 +82,7 @@ Najczęstsze ceny promocyjne (EUR):
 | Pozycja | Reguła |
 |---|---|
 | Hotel | **60 EUR za noc** (kwota kalkulacyjna, zależy od terminu). „4 dni / 3 noce” w PDF kliniki → liczymy **4 noce**. „7 dni / 6 nocy” → **6 nocy**. Inne długości – wg ustaleń z Pauliną (np. „3 dni / 2 noce” → 2 noce). |
-| Koordynator | Płatność dla kliniki za wizytę **> 2500 EUR → 300 EUR**, **≤ 2500 EUR → 200 EUR**. Polecenie Pauliny ma pierwszeństwo (bywało 400 EUR albo 0). |
+| Koordynator | Płatność dla kliniki za wizytę **> 2500 EUR → 300 EUR**, **≤ 2500 EUR → 200 EUR**. **Koordynator anglojęzyczny → 0 EUR** (zaliczka = sam hotel; w tekstach „anglojęzycznego koordynatora”, nota o zaliczce bez „kosztów organizacyjnych”). Polecenie Pauliny ma pierwszeństwo (bywało 400 EUR albo 0). |
 | Transfery | 240 EUR na wizytę, **zwykle już wliczone w płatność dla kliniki** – sprawdzić i nie liczyć podwójnie. |
 | Przeloty | poza wyceną; pacjent organizuje je sam. |
 | Osoba towarzysząca | nocuje w tym samym pokoju bez dopłaty (o ile nie ma innych ustaleń). |
