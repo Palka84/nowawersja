@@ -1,16 +1,38 @@
-"""Fly4Smile – generator oferty (plan leczenia Esnan) z pliku JSON pacjenta.
-Użycie:
-  python3 buduj_oferte.py <pacjent.json> <katalog_wyjściowy>
-Wynik: <katalog>/oferta-esnan-pl-Imie-Nazwisko.html (wszystkie obrazki osadzone base64).
-Potem: popraw_v7.py (styl v7) i topdf.js (PDF 520 px, wersja na telefon).
-Schemat JSON: patrz przyklad/pacjent_przyklad.json i SKILL.md (rozdz. 7)."""
+"""Fly4Smile – offer (treatment plan) generator for Esnan patients, from a patient JSON file.
+Usage:
+  python3 build_offer.py <patient.json> <output_folder>
+Output: <folder>/oferta-esnan-pl-First-Last.html (all images embedded as base64).
+Then: apply_v7_style.py (v7 style) and to_pdf.js (520 px PDF, phone version).
+JSON format: see example/example_patient.json and TREATMENT_PLAN_RULES.md (section 7.3).
+Keys are English; VALUES are the Polish patient-facing texts (the offer is in Polish).
+The Polish texts in the T['pl'] dictionary below are fixed offer wording – do not translate them."""
 import re, base64, sys, urllib.parse, os, json
 
 PJSON, OUT = sys.argv[1], sys.argv[2]
 HERE = os.path.dirname(os.path.abspath(__file__))
 P = json.load(open(PJSON, encoding='utf-8'))
+
+# Input JSON uses English keys (see example/example_patient.json). Older Polish keys are still accepted.
+EN2PL = {"patient": "pacjent", "date": "data", "valid_until": "wazna_do", "coordinator": "koordynator", "detailed": "szczegolowa",
+         "intro": "opis", "visits": "wizyty", "title": "tytul", "short": "krotko", "stay": "pobyt", "chart": "schemat",
+         "items": "pozycje", "jaw": "luk", "text": "opis", "qty": "ilosc", "cost": "koszt", "treatment_costs": "koszt_leczenia",
+         "organisational_costs": "koszty_organizacyjne", "rows": "wiersze", "total": "suma", "options": "opcje", "name": "nazwa",
+         "description": "opis", "timeline": "os_czasu", "payments": "platnosci", "headers": "naglowki", "discount_html": "rabat_html",
+         "extra_info": "dodatkowe_informacje", "plan_heading": "naglowek_planu", "subtitle": "podtytul", "warranty": "gwarancja",
+         "heading": "naglowek", "subheading": "podtytul", "points": "punkty", "note": "uwaga", "image": "obraz", "image_alt": "opis_obrazu"}
+def _pl(o, parent=None):
+    if isinstance(o, dict):
+        out = {}
+        for k, v in o.items():
+            kk = EN2PL.get(k, k)
+            if parent == "platnosci" and k == "total": kk = "razem"     # payments.total -> razem
+            out[kk] = _pl(v, kk)
+        return out
+    if isinstance(o, list): return [_pl(x, parent) for x in o]
+    return o
+P = _pl(P)
 PJDIR = os.path.dirname(os.path.abspath(PJSON))
-TPL = os.path.join(HERE, '..', 'szablon', 'oferta-esnan-pl-v5.html')
+TPL = os.path.join(HERE, '..', 'template', 'offer_template_v5.html')
 SRC = {'pl': TPL, 'en': TPL}
 PHONE_TXT = '+44 7520 636 317'
 PHONE = '447520636317'
@@ -28,7 +50,7 @@ T = {
   accept_btn='Akceptuję plan — napisz na WhatsApp →', costs_btn='Zobacz koszty',
   wa_accept=f'Dzień dobry, akceptuję plan leczenia ({CASE}) i chcę zarezerwować termin.',
   wa_q=f'Dzień dobry, mam pytanie do mojego planu leczenia ({CASE}).',
-  meta=[],  # uzupełniane z JSON
+  meta=[],  # filled from JSON
   plan_tag='Plan leczenia', plan_h2='Implantologiczno-protetyczny <span class="accent">plan leczenia</span>',
   plan_intro='',  # z JSON: opis
   stage_cost='Koszt wizyty',
@@ -473,12 +495,12 @@ def build(lang, imgs):
             f'<style>{css}</style>\n</head>\n<body>\n')
     return head + body + '\n</body>\n</html>\n'
 
-IMG = os.path.join(HERE, '..', 'szablon', 'img') + '/'
+IMG = os.path.join(HERE, '..', 'template', 'img') + '/'
 def uri(fn, base=IMG):
     path = fn if os.path.isabs(fn) else os.path.join(base, fn)
     mime = 'image/png' if path.endswith('.png') else 'image/jpeg'
     return f'data:{mime};base64,' + base64.b64encode(open(path, 'rb').read()).decode()
-# dane pacjenta -> pola szablonu PL
+# dane pacjenta -> pola templateu PL
 t = T['pl']
 t['wa_accept'] = f'Dzień dobry, akceptuję plan leczenia ({CASE}) i chcę zarezerwować termin.'
 t['wa_q'] = f'Dzień dobry, mam pytanie do mojego planu leczenia ({CASE}).'

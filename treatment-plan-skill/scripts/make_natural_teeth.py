@@ -1,7 +1,7 @@
-"""Tworzy rysunki zębów naturalnych (natural_XX.png) z biblioteki koron cyrkonowych:
-piksele turkusowe (korona) są przemalowane na kolor szkliwa (kość słoniowa) wg luminancji.
-Korzeń zostaje bez zmian. Wynik: biblioteka/natural/ (32 pliki, 11–48).
-Użycie: python3 zrob_zeby_naturalne.py <folder_z_zirconia_crown_XX.png> <folder_wyjściowy>"""
+"""Creates natural-tooth drawings (natural_XX.png) from the zirconia-crown library:
+turquoise crown pixels are recoloured to enamel ivory by luminance; the root stays unchanged.
+Output: library/natural_teeth/ (32 files, 11–48).
+Usage: python3 make_natural_teeth.py <folder_with_zirconia_crown_XX.png> <output_folder>"""
 import sys, glob, os, colorsys
 from PIL import Image
 SRC, OUT = sys.argv[1], sys.argv[2]
@@ -23,4 +23,4 @@ for fn in sorted(glob.glob(os.path.join(SRC, "zirconia_crown_[1-4][1-8].png"))):
                 L = int(0.299*r+0.587*g+0.114*b); L = min(255, int(L*1.08)+8)
                 c = lut(L); px[x,y] = (c[0],c[1],c[2],a)
     im.save(os.path.join(OUT, "natural_" + fn.split("_")[-1]))
-print("gotowe:", len(os.listdir(OUT)))
+print("done:", len(os.listdir(OUT)))

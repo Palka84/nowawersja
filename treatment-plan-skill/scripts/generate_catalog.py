@@ -1,4 +1,5 @@
-"""Generuje KATALOG_RYSUNKOW.md z drive_index.csv."""
+"""Generuje KATALOG_RYSUNKOW_PL.md z drive_index.csv."""
+# NOTE: generates the POLISH catalog (KATALOG_RYSUNKOW_PL.md) for Paulina; the English DRAWING_CATALOG.md is maintained by hand.
 import csv, sys, os, re
 IDX, OUT = sys.argv[1], sys.argv[2]
 rows = list(csv.DictReader(open(IDX, encoding='utf-8')))
@@ -45,18 +46,18 @@ A = L.append
 A("# Katalog rysunków – co rysujemy w jakiej sytuacji\n")
 A(f"Biblioteka rysunków na Google Drive: **[New Common Dental Procedures 2026-11-08]({ROOT})** "
   "(foldery „English – Polski”, pliki `<zabieg>_<numer FDI>.png`, przezroczyste tło, jedna skala 32,7 px = 1 mm). "
-  "Pełna lista plików z linkami: `biblioteka/drive_index.csv`. Arkusz procedur: "
+  "Pełna lista plików z linkami: `library/drive_index.csv`. Arkusz procedur: "
   "[New Common Dental Procedures 2026-11-08 (arkusz)](https://docs.google.com/spreadsheets/d/18YDUc4iizkf9e4tz5rfCG9JWz-FZioEGAqs0Y-0EIsQ/edit) "
-  "(eksport: `biblioteka/arkusz_procedur.csv`).\n")
-A("Zęby naturalne (`natural_11.png` … `natural_48.png`) **nie są na Drive** – są w `biblioteka/natural/` "
-  "(powstały z koron cyrkonowych przez przemalowanie korony na kolor szkliwa: `skrypty/zrob_zeby_naturalne.py`).\n")
+  "(eksport: `library/procedures_sheet.csv`).\n")
+A("Zęby naturalne (`natural_11.png` … `natural_48.png`) **nie są na Drive** – są w `library/natural_teeth/` "
+  "(powstały z koron cyrkonowych przez przemalowanie korony na kolor szkliwa: `scripts/make_natural_teeth.py`).\n")
 A("## 1. Jak powstaje schemat\n")
 A("1. Z RTG i schematu kliniki ustal stan **każdego** z 32 zębów na koniec danej wizyty.\n"
   "2. Zapisz go w pliku JSON: `{\"state\": {\"<numer>\": \"<stan>\", …}, \"bridges\": [[od, do], …], \"bridge_color\": [r,g,b]}`. "
   "Zęby nie wpisane = `natural`.\n"
-  "3. `python3 skrypty/schemat_zebow.py <folder_PNG_z_Drive> biblioteka/natural wynik.png config.json` – skrypt dla każdego zęba bierze plik wg tabeli poniżej, "
+  "3. `python3 scripts/tooth_chart.py <folder_PNG_z_Drive> library/natural_teeth wynik.png config.json` – skrypt dla każdego zęba bierze plik wg tabeli poniżej, "
   "skaluje wszystkie zęby jednym współczynnikiem (szerokość 2400 px), ustawia je obok siebie wzdłuż linii zgryzu, rysuje numery.\n"
-  "4. Jeśli jest podniesienie zatoki: `skrypty/dodaj_zatoki.py` (rysunek nad 16 i/lub 26).\n"
+  "4. Jeśli jest podniesienie zatoki: `scripts/add_sinus_lift.py` (rysunek nad 16 i/lub 26).\n"
   "5. Zmniejsz do 1500 px (JPG, jakość ~74) i podaj w JSON pacjenta jako `schemat` wizyty.\n")
 A("**Zasady rysowania (wspólne):**\n")
 A("- Górny łuk: 18 … 11 | 21 … 28, korzenie do góry; dolny: 48 … 41 | 31 … 38, korzenie w dół. Prawa strona pacjenta = lewa strona obrazka.\n"
@@ -69,17 +70,17 @@ A("## 2. Stany pojedynczych zębów\n")
 A("| Stan w JSON | Kiedy | Plik (n = numer FDI) | Folder na Drive | Jak wygląda | Przykład |")
 A("|---|---|---|---|---|---|")
 for st, when, fn, folder, ex, look in STATES:
-    exfile = [f for f in sorted(os.listdir(os.path.join(os.path.dirname(OUT), 'katalog'))) if f.startswith(ex) and f.endswith('.jpg')][0]
-    A(f"| `{st}` | {when} | `{fn}` | {flink(folder) if folder else '—'} | {look} | [{exfile}](katalog/{exfile}) |")
+    exfile = [f for f in sorted(os.listdir(os.path.join(os.path.dirname(OUT), 'catalog'))) if f.startswith(ex) and f.endswith('.jpg')][0]
+    A(f"| `{st}` | {when} | `{fn}` | {flink(folder) if folder else '—'} | {look} | [{exfile}](catalog/{exfile}) |")
 A("")
 A("Przykładowe pliki na Drive (ząb 36 lub 11): " + ", ".join(link(f) for f in [
   "implant_36.png", "zirconia_crown_36.png", "zirconia_crown_on_implant_36.png", "temporary_crown_on_implant_36.png",
   "temporary_crown_pmma_36.png", "bridge_pontic_36.png", "bridge_abutment_36.png", "implant_bridge_pontic_36.png",
   "implant_bridge_abutment_36.png", "extraction_36.png", "veneer_11.png", "root_canal_36.png", "filling_36.png", "zirconia_implant_36.png"]) + ".\n")
 A("> Uwaga: rysunków `temp_pontic_{n}.png` (przęsło stałej pracy tymczasowej) **nie ma na Drive** – generuje je "
-  "`skrypty/zrob_przesla_tymczasowe.py` z `implant_bridge_pontic_{n}.png` (przemalowanie na bursztyn PMMA). "
-  "Zęby naturalne `natural_{n}.png` – podobnie, z `zirconia_crown_{n}.png` (`skrypty/zrob_zeby_naturalne.py`, gotowe w `biblioteka/natural/`). "
-  "Wszystkie PNG z Drive pobieramy do **jednego płaskiego folderu** i podajemy go jako pierwszy argument `schemat_zebow.py`.\n")
+  "`scripts/make_temp_pontics.py` z `implant_bridge_pontic_{n}.png` (przemalowanie na bursztyn PMMA). "
+  "Zęby naturalne `natural_{n}.png` – podobnie, z `zirconia_crown_{n}.png` (`scripts/make_natural_teeth.py`, gotowe w `library/natural_teeth/`). "
+  "Wszystkie PNG z Drive pobieramy do **jednego płaskiego folderu** i podajemy go jako pierwszy argument `tooth_chart.py`.\n")
 A("## 3. Jak przełożyć zabieg z PDF kliniki na stan zęba\n")
 A("| Pozycja w PDF kliniki | Schemat wizyty I | Schemat wizyty II |")
 A("|---|---|---|")
@@ -93,7 +94,7 @@ for a,b,c in [
  ("Licówka Laminate Veneer", "`natural`", "`veneer`"),
  ("Korona porcelanowa Empress", "`natural`", "`crown` (ten sam rysunek co cyrkon – opis w tekście)"),
  ("Ekstrakcja / ekstrakcja chirurgiczna", "`extraction`", "`missing` (albo implant/przęsło, jeśli tak w planie)"),
- ("Podniesienie zatoki", "rysunek zatoki nad 16 i/lub 26 (`dodaj_zatoki.py`)", "bez zatoki"),
+ ("Podniesienie zatoki", "rysunek zatoki nad 16 i/lub 26 (`add_sinus_lift.py`)", "bez zatoki"),
  ("Leczenie kanałowe", "nie rysujemy osobno (ząb pod koronę)", "`crown`"),
  ("Ząb istniejący na RTG, bez zabiegu (też ósemki)", "`natural`", "`natural`"),
  ("Brak zęba na RTG", "`missing`", "`missing`"),
@@ -101,7 +102,7 @@ for a,b,c in [
     A(f"| {a} | {b} | {c} |")
 A("")
 A("## 4. Pełne łuki i zatoki\n")
-A(f"Folder: {flink('Full Arch – Pełny łuk')}, {flink('Sinus Lift – Podniesienie zatoki')}. Skrypty: `schemat_pelny_luk.py <górny.png> <dolny.png> <wynik> [zatoka.png] [both]`, `schemat_zatoki_bez_implantow.py`.\n")
+A(f"Folder: {flink('Full Arch – Pełny łuk')}, {flink('Sinus Lift – Podniesienie zatoki')}. Skrypty: `full_arch_chart.py <górny.png> <dolny.png> <wynik> [zatoka.png] [both]`, `sinus_without_implants_chart.py`.\n")
 A("| Sytuacja | Rysunek | Plik(i) na Drive | Przykład |")
 A("|---|---|---|---|")
 for sit, look, files, ex in [
@@ -115,19 +116,19 @@ for sit, look, files, ex in [
 ]:
     ex_s = ""
     if ex:
-        exfile = [f for f in sorted(os.listdir(os.path.join(os.path.dirname(OUT), 'katalog'))) if f.startswith(ex) and f.endswith('.jpg')][0]
-        ex_s = f"[{exfile}](katalog/{exfile})"
+        exfile = [f for f in sorted(os.listdir(os.path.join(os.path.dirname(OUT), 'catalog'))) if f.startswith(ex) and f.endswith('.jpg')][0]
+        ex_s = f"[{exfile}](catalog/{exfile})"
     A(f"| {sit} | {look} | " + ", ".join(link(f) for f in files) + f" | {ex_s} |")
 A("")
 A("Implanty w pełnych łukach: All-on-6 – proste w 16/14/12/22/24/26 i 46/44/42/32/34/36; All-on-4 – proste 12/22 i 42/32, pochylone 35° w 15/25 i 45/35.\n")
 A("## 5. Przykłady (podgląd)\n")
-for f in sorted(os.listdir(os.path.join(os.path.dirname(OUT), 'katalog'))):
+for f in sorted(os.listdir(os.path.join(os.path.dirname(OUT), 'catalog'))):
     if f.endswith('.jpg'):
         cfg = f[:-4] + '.json'
-        has = os.path.exists(os.path.join(os.path.dirname(OUT), 'katalog', cfg))
+        has = os.path.exists(os.path.join(os.path.dirname(OUT), 'catalog', cfg))
         A(f"### {f[:-4].replace('_', ' ')}\n")
-        if has: A(f"Konfiguracja: [`katalog/{cfg}`](katalog/{cfg})\n")
-        A(f"![{f}](katalog/{f})\n")
+        if has: A(f"Konfiguracja: [`catalog/{cfg}`](catalog/{cfg})\n")
+        A(f"![{f}](catalog/{f})\n")
 A("## 6. Wszystkie foldery biblioteki na Drive\n")
 A("| Folder | Liczba plików |")
 A("|---|---|")

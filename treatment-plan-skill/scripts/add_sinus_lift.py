@@ -1,10 +1,11 @@
-"""Dodaje nad schematem zębów (z schemat_zebow.py) pasek z rysunkiem podniesienia zatoki
-i podpisem „Podniesienie zatoki — prawa/lewa strona”.
-Rysunek zatoki stoi nad zębem 16 (prawa strona pacjenta = lewa strona obrazka) i/lub 26.
-Użycie:
-  python3 dodaj_zatoki.py <schemat.jpg|png> <sinus_lift_one_side.png> <wynik.jpg> prawa|lewa|obie [pl|en]
-Rysunek zatoki: Drive › Sinus Lift – Podniesienie zatoki › sinus_lift_one_side.png
-(szerokie podniesienie: wide_sinus_lift_one_side.png)."""
+"""Adds a band above the tooth chart (from tooth_chart.py) with the sinus-lift drawing
+and the caption "Podniesienie zatoki — prawa/lewa strona" (Polish offer text; "en" = English caption).
+The drawing sits above tooth 16 (patient's right = left side of the image) and/or 26.
+Usage:
+  python3 add_sinus_lift.py <chart.jpg|png> <sinus_lift_one_side.png> <output.jpg> right|left|both [pl|en]
+  (Polish aliases prawa|lewa|obie also accepted)
+Sinus drawing: Drive › Sinus Lift – Podniesienie zatoki › sinus_lift_one_side.png
+(wide sinus lift: wide_sinus_lift_one_side.png)."""
 import sys
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
@@ -14,14 +15,14 @@ LAB = {"pl": ("Podniesienie zatoki — prawa strona", "Podniesienie zatoki — l
        "en": ("Sinus lift — right side", "Sinus lift — left side")}[lang]
 ch = Image.open(chart).convert("RGB")
 SL = Image.open(sinus).convert("RGBA"); SL = SL.crop(SL.getbbox())
-W = ch.width; k = W / 2400                      # skrypt liczony dla szerokości 2400 px
+W = ch.width; k = W / 2400                      # layout designed for a 2400 px wide chart
 sw = round(380 * k); SL = SL.resize((sw, round(SL.height * sw / SL.width)), Image.LANCZOS)
 F = ImageFont.truetype("/usr/share/fonts/opentype/inter/Inter-SemiBold.otf", max(14, round(34 * k)))
 bh = SL.height + round(70 * k)
 c = Image.new("RGB", (W, bh + ch.height), "white"); c.paste(ch, (0, bh)); d = ImageDraw.Draw(c)
 sides = []
-if side in ("prawa", "obie"): sides.append((int(W * 0.19), ImageOps.mirror(SL), LAB[0]))   # nad zębem 16
-if side in ("lewa", "obie"):  sides.append((int(W * 0.81), SL, LAB[1]))                     # nad zębem 26
+if side in ("prawa", "obie", "right", "both"): sides.append((int(W * 0.19), ImageOps.mirror(SL), LAB[0]))   # above tooth 16
+if side in ("lewa", "obie", "left", "both"):  sides.append((int(W * 0.81), SL, LAB[1]))                     # above tooth 26
 for cx, img, t in sides:
     w = d.textlength(t, font=F)
     d.text((min(max(cx - w / 2, 40 * k), W - 40 * k - w), round(10 * k)), t, font=F, fill=(19, 37, 68))

@@ -1,12 +1,17 @@
-"""Diagram 32 zębów w stylu formatki Fly4Smile, z grafik z biblioteki (2x rozdzielczość).
-state: crown | pontic | natural | missing ; treated = podświetlony numer"""
+"""Tooth chart (32 teeth, FDI) built from the drawing library, one common scale, teeth side by side
+with anatomical widths – the chart used in the Fly4Smile offers.
+Usage: python3 tooth_chart.py <library_png_folder> <natural_teeth_folder> <output.png> <config.json>
+config: {"state": {"<FDI>": "<state>"}, "bridges": [[from, to]], "bridge_color": [r,g,b], "arch": {...}}
+states: natural | missing | extraction | implant | implant_crown | temp_implant | crown | pontic |
+        implant_pontic | temp_pontic | veneer  (see DRAWING_CATALOG.md); any state other than natural/missing
+        gets a highlighted (turquoise) tooth number."""
 import sys, json, os
 from PIL import Image, ImageDraw, ImageFont
 TEETH, NAT, OUT, CFG = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 cfg = json.load(open(CFG))
 st = {int(k): v for k, v in cfg["state"].items()}
 bridges = cfg.get("bridges", [])
-# pełne łuki: {"upper": {"file": "12_zirconia_crowns_upper_all-on-6.png", "from": 16, "to": 26}, "lower": {...}}
+# full arches: {"upper": {"file": "12_zirconia_crowns_upper_all-on-6.png", "from": 16, "to": 26}, "lower": {...}}
 ARCH = cfg.get("arch", {})
 ARCH_T = set()
 for _k, _a in ARCH.items():

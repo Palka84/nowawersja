@@ -1,26 +1,26 @@
 {
-  "pacjent": "Jan Kowalski",
-  "data": "17 lis 2026",
-  "wazna_do": "17 gru 2026",
-  "koordynator": "Paulina Ayla",
-  "szczegolowa": true,
-  "opis": "Leczenie odbywa się w dwóch wizytach, zaplanowanych z uwzględnieniem czasu gojenia. Podczas wizyty I wszczepiamy 2 implanty Medentika by Straumann (Niemcy) w szczęce po prawej stronie, w miejscu zębów 14 i 15. Po około 3 miesiącach gojenia wykonujemy ostateczną odbudowę: korony cyrkonowe Amann Girrbach lub Ivoclar na implantach 14 i 15.",
-  "wizyty": [
+  "patient": "Jan Kowalski",
+  "date": "17 lis 2026",
+  "valid_until": "17 gru 2026",
+  "coordinator": "Paulina Ayla",
+  "detailed": true,
+  "intro": "Leczenie odbywa się w dwóch wizytach, zaplanowanych z uwzględnieniem czasu gojenia. Podczas wizyty I wszczepiamy 2 implanty Medentika by Straumann (Niemcy) w szczęce po prawej stronie, w miejscu zębów 14 i 15. Po około 3 miesiącach gojenia wykonujemy ostateczną odbudowę: korony cyrkonowe Amann Girrbach lub Ivoclar na implantach 14 i 15.",
+  "visits": [
     {
-      "tytul": "Wizyta I — leczenie implantologiczne",
-      "krotko": "wizyta I",
-      "pobyt": "3 dni / 2 noce",
-      "schemat": "schemat_wizyta1.jpg",
-      "pozycje": [
+      "title": "Wizyta I — leczenie implantologiczne",
+      "short": "wizyta I",
+      "stay": "3 dni / 2 noce",
+      "chart": "chart_visit1.jpg",
+      "items": [
         {
-          "luk": "Szczęka górna",
-          "opis": "Implant Medentika by Straumann (Niemcy) · zęby 14, 15",
-          "ilosc": "2×"
+          "jaw": "Szczęka górna",
+          "text": "Implant Medentika by Straumann (Niemcy) · zęby 14, 15",
+          "qty": "2×"
         }
       ],
-      "koszt": "€1 402,00",
-      "koszt_leczenia": {
-        "wiersze": [
+      "cost": "€1 402,00",
+      "treatment_costs": {
+        "rows": [
           [
             "Implant Medentika by Straumann (Niemcy) · zęby 14, 15",
             "2",
@@ -28,13 +28,13 @@
             "842 EUR"
           ]
         ],
-        "suma": [
+        "total": [
           "Leczenie stomatologiczne — wizyta I",
           "842 EUR"
         ]
       },
-      "koszty_organizacyjne": {
-        "wiersze": [
+      "organisational_costs": {
+        "rows": [
           [
             "Transfery lotnisko – hotel – klinika – hotel – lotnisko",
             "1",
@@ -54,27 +54,27 @@
             "200 EUR"
           ]
         ],
-        "suma": [
+        "total": [
           "Koszty organizacyjne — wizyta I",
           "560 EUR"
         ]
       }
     },
     {
-      "tytul": "Wizyta II — ostateczna odbudowa protetyczna",
-      "krotko": "wizyta II",
-      "pobyt": "4 dni / 4 noce",
-      "schemat": "schemat_wizyta2.jpg",
-      "pozycje": [
+      "title": "Wizyta II — ostateczna odbudowa protetyczna",
+      "short": "wizyta II",
+      "stay": "4 dni / 4 noce",
+      "chart": "chart_visit2.jpg",
+      "items": [
         {
-          "luk": "Szczęka górna",
-          "opis": "Korona cyrkonowa Amann Girrbach lub Ivoclar na implancie · zęby 14, 15",
-          "ilosc": "2×"
+          "jaw": "Szczęka górna",
+          "text": "Korona cyrkonowa Amann Girrbach lub Ivoclar na implancie · zęby 14, 15",
+          "qty": "2×"
         }
       ],
-      "koszt": "€1 164,00",
-      "koszt_leczenia": {
-        "wiersze": [
+      "cost": "€1 164,00",
+      "treatment_costs": {
+        "rows": [
           [
             "Korona cyrkonowa Amann Girrbach lub Ivoclar na implancie · zęby 14, 15",
             "2",
@@ -82,13 +82,13 @@
             "484 EUR"
           ]
         ],
-        "suma": [
+        "total": [
           "Leczenie stomatologiczne — wizyta II",
           "484 EUR"
         ]
       },
-      "koszty_organizacyjne": {
-        "wiersze": [
+      "organisational_costs": {
+        "rows": [
           [
             "Transfery lotnisko – hotel – klinika – hotel – lotnisko",
             "1",
@@ -108,14 +108,14 @@
             "200 EUR"
           ]
         ],
-        "suma": [
+        "total": [
           "Koszty organizacyjne — wizyta II",
           "680 EUR"
         ]
       }
     }
   ],
-  "os_czasu": [
+  "timeline": [
     [
       "Wizyta I",
       "3 dni / 2 noce"
@@ -129,8 +129,8 @@
       "4 dni / 4 noce"
     ]
   ],
-  "platnosci": {
-    "wiersze": [
+  "payments": {
+    "rows": [
       [
         "Wizyta I — 3 dni / 2 noce",
         "€1 402,00",
@@ -144,8 +144,8 @@
         "€724,00"
       ]
     ],
-    "razem": "€2 566,00"
+    "total": "€2 566,00"
   },
-  "rabat_html": "<b>Twoja zniżka</b><span>Cena regularna leczenia według cennika kliniki: <s>1 870 EUR</s> · zniżka ok. 30% (544 EUR) · cena leczenia po zniżce: <b>1 326 EUR</b>.</span>",
-  "dodatkowe_informacje": []
+  "discount_html": "<b>Twoja zniżka</b><span>Cena regularna leczenia według cennika kliniki: <s>1 870 EUR</s> · zniżka ok. 30% (544 EUR) · cena leczenia po zniżce: <b>1 326 EUR</b>.</span>",
+  "extra_info": []
 }

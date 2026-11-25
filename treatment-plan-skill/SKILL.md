@@ -12,14 +12,14 @@ Pliki w tym folderze:
 | Ścieżka | Co to jest |
 |---|---|
 | `SKILL.md` | ten dokument – wszystkie zasady i proces |
-| `KATALOG_RYSUNKOW.md` | co rysujemy w jakiej sytuacji, z przykładami i linkami do Google Drive |
-| `katalog/` | przykładowe schematy (JPG) i ich konfiguracje (JSON) do każdej sytuacji |
-| `biblioteka/drive_index.csv` | lista wszystkich rysunków na Google Drive z linkami (plik po pliku) |
-| `biblioteka/arkusz_procedur.csv` | eksport arkusza „New Common Dental Procedures 2026-11-08” (procedury, ceny, które obrazki) |
-| `biblioteka/natural/` | rysunki zębów naturalnych `natural_11.png` … `natural_48.png` (nie ma ich na Drive) |
-| `skrypty/` | generatory: schemat zębów, pełne łuki, zatoki, oferta HTML, styl v7, eksport PDF |
-| `szablon/` | szablon oferty (HTML v5 z CSS) i stałe zdjęcia (logo, klinika, certyfikaty, opinie, filmy) |
-| `przyklad/` | kompletny przykład: JSON pacjenta → schematy → PDF podstawowy i szczegółowy |
+| `KATALOG_RYSUNKOW_PL.md` | co rysujemy w jakiej sytuacji, z przykładami i linkami do Google Drive |
+| `catalog/` | przykładowe schematy (JPG) i ich konfiguracje (JSON) do każdej sytuacji |
+| `library/drive_index.csv` | lista wszystkich rysunków na Google Drive z linkami (plik po pliku) |
+| `library/procedures_sheet.csv` | eksport arkusza „New Common Dental Procedures 2026-11-08” (procedury, ceny, które obrazki) |
+| `library/natural_teeth/` | rysunki zębów naturalnych `natural_11.png` … `natural_48.png` (nie ma ich na Drive) |
+| `scripts/` | generatory: schemat zębów, pełne łuki, zatoki, oferta HTML, styl v7, eksport PDF |
+| `template/` | template oferty (HTML v5 z CSS) i stałe zdjęcia (logo, klinika, certyfikaty, opinie, filmy) |
+| `example/` | kompletny przykład: JSON pacjenta → schematy → PDF podstawowy i szczegółowy |
 | `../cennik/Esnan_cennik_2026-06-19.csv` / `.pdf` | obowiązujący cennik kliniki |
 | `../CLAUDE.md` | skrót najważniejszych zasad (stałe ustalenia z Pauliną) |
 
@@ -46,8 +46,8 @@ PDF kliniki ──► 1. odczyt ──► 2. weryfikacja ──► 3. KALKULACJA
 2. **Weryfikacja**: imię i nazwisko, liczba każdego zabiegu, ceny jednostkowe vs cennik (rozdz. 3), sumy wizyt, transfery (240 EUR/wizytę – czy są już w kwocie kliniki), suma regularna i zniżka. Każdą rozbieżność **zgłaszamy**, nie poprawiamy po cichu.
 3. **Kalkulacja wewnętrzna** (rozdz. 6) – to jest pierwszy wynik. Ofertę robimy dopiero po akceptacji Pauliny, chyba że wprost poprosi o gotową ofertę.
 4. **Odczyt RTG / schematu kliniki** (rozdz. 5): które zęby pacjent ma, których brakuje, gdzie są istniejące mosty i korony, gdzie klinika zaznaczyła zabiegi. Na tej podstawie numery zębów (FDI) dla każdej pozycji.
-5. **Schematy zębów** – po jednym na wizytę (rozdz. 8 i `KATALOG_RYSUNKOW.md`).
-6. **HTML oferty** z szablonu (rozdz. 7) – podstawowa albo szczegółowa.
+5. **Schematy zębów** – po jednym na wizytę (rozdz. 8 i `KATALOG_RYSUNKOW_PL.md`).
+6. **HTML oferty** z templateu (rozdz. 7) – podstawowa albo szczegółowa.
 7. **PDF w wersji na telefon** (rozdz. 9).
 8. **Kontrola jakości** (rozdz. 11) i dopiero wtedy wysyłka do Pauliny z krótkim podsumowaniem i listą pytań otwartych.
 
@@ -150,7 +150,7 @@ Na miejscu gotówką lub fizyczną kartą; transakcje kartą w TRY, opłata oper
 - **Cennik (każda oferta):** pod tabelą płatności wiersz „Razem” (koszt / zaliczki / na miejscu) i ramka „Zaliczki łącznie” + „Na miejscu łącznie — cena leczenia po zniżce”; kwota na miejscu = cena po zniżce z ramki „Twoja zniżka”. Generator liczy to sam.
 - **Oferta szczegółowa** – nagłówek „Szczegółowy plan leczenia”, a w sekcji „Cennik” nad tabelą płatności zbiorcza tabela **„Szczegółowa wycena — wszystkie pozycje”** (każda wizyta: zabiegi z ceną jednostkową, transfery, hotel, koordynator, „Razem — wizyta”, na końcu całkowity koszt). Generator robi to sam przy `"szczegolowa": true`. Plik wysyłamy z końcówką `-szczegolowa`, żeby telefon nie pokazał starej kopii.
 - **Oferta szczegółowa** (na prośbę): w każdej wizycie dodatkowo tabela **„Koszt leczenia”** (Zabieg / Ilość / Cena jednostkowa / Łącznie) i **„Koszty organizacyjne”** (transfery, hotel, koordynacja i tłumaczenie). Każda widoczna pozycja sumuje się dokładnie do kosztu wizyty. Rabat – raz, na końcu.
-- Sekcje stałe szablonu (w tej kolejności): okładka → metryczka (klinika, pacjent, koordynator, data, ważna do = data + 30 dni) → plan leczenia (wizyty) → oś czasu (Wizyta I / Gojenie / Wizyta II) → „Cena każdej wizyty zawiera…” → **Cennik**: tabela Wizyta / Koszt / Zaliczka / Na miejscu + suma → nota o zaliczce → **Ważne informacje** → 3 kroki → gwarancja (10 lat: certyfikat kliniki Esnan, certyfikat Amann Girrbach Zolid, implanty – dożywotnio producent + paszport implantu, 2 lata opieki Fly4Smile; wyłączenia: esnandentalclinics.com/warranty) → certyfikaty (JCI, Straumann Highest Volume, Diamond Partner Amann Girrbach – z wyróżnieniami tekstu) → o klinice → lokalizacja (hotel–klinika) → opinie → filmy → stopka z WhatsApp.
+- Sekcje stałe templateu (w tej kolejności): okładka → metryczka (klinika, pacjent, koordynator, data, ważna do = data + 30 dni) → plan leczenia (wizyty) → oś czasu (Wizyta I / Gojenie / Wizyta II) → „Cena każdej wizyty zawiera…” → **Cennik**: tabela Wizyta / Koszt / Zaliczka / Na miejscu + suma → nota o zaliczce → **Ważne informacje** → 3 kroki → gwarancja (10 lat: certyfikat kliniki Esnan, certyfikat Amann Girrbach Zolid, implanty – dożywotnio producent + paszport implantu, 2 lata opieki Fly4Smile; wyłączenia: esnandentalclinics.com/warranty) → certyfikaty (JCI, Straumann Highest Volume, Diamond Partner Amann Girrbach – z wyróżnieniami tekstu) → o klinice → lokalizacja (hotel–klinika) → opinie → filmy → stopka z WhatsApp.
 - Teksty „Ważnych informacji” (domyślne): ważność 30 dni; plan wstępny do potwierdzenia po RTG i badaniu; hotel 60 EUR/dobę – zależnie od terminu; transfery i koordynator w cenie, osoba towarzysząca bez dopłaty; cena nie obejmuje przelotów – pacjent organizuje je we własnym zakresie; płatności (rozdz. 3.5). Plus punkty specyficzne dla pacjenta (zatoka, leczenia kanałowe, onkolog, dostawka, możliwość koron porcelanowych/licówek z różnicą ceny…).
 - Opcje leczenia (np. 2–3 warianty) – osobne sekcje/plany w jednym dokumencie, w kolejności wskazanej przez Paulinę.
 
@@ -163,7 +163,7 @@ Na miejscu gotówką lub fizyczną kartą; transakcje kartą w TRY, opłata oper
 - Obrazki kompresowane (schematy 1500 px, JPG q≈74), żeby plik nie był za duży (~2–3 MB).
 
 ### 7.3 Dane wejściowe generatora (JSON pacjenta)
-`skrypty/buduj_oferte.py` czyta jeden plik JSON – patrz `przyklad/pacjent_przyklad.json`:
+`scripts/build_offer.py` czyta jeden plik JSON – patrz `example/example_patient.json`:
 
 | Pole | Opis |
 |---|---|
@@ -175,7 +175,7 @@ Na miejscu gotówką lub fizyczną kartą; transakcje kartą w TRY, opłata oper
 | `wizyty[]` | `tytul`, `krotko` (np. „wizyta I”), `pobyt` („3 dni / 2 noce”), `schemat` (ścieżka JPG schematu, względna do JSON), `pozycje[]` (`luk`: Szczęka górna / Żuchwa / Dodatkowo, `opis`, `ilosc`: „2×”), `koszt`; dla szczegółowej: `koszt_leczenia` i `koszty_organizacyjne` (`wiersze` [zabieg, ilość, cena jedn., łącznie], `suma` [etykieta, kwota]) |
 | `opcje[]` | zamiast `wizyty`, gdy oferta ma kilka opcji: `nazwa`, opcjonalnie `opis`, `wizyty[]` (jak wyżej); wtedy `platnosci.naglowki` = ["Opcja / wizyta", …], a `platnosci.razem` = lista [etykieta, kwota] – jedna suma na opcję |
 | `naglowek_planu`, `podtytul` | opcjonalnie – np. „Protetyczny plan leczenia”, gdy nie ma implantów |
-| `gwarancja` | opcjonalnie: `lead`, `naglowek`, `podtytul`, `punkty[]`, `uwaga`, `obraz` (np. `certyfikaty_gwarancji.jpg` z `szablon/img`), `opis_obrazu` – np. bez punktu o implantach, gdy ich nie ma w planie |
+| `gwarancja` | opcjonalnie: `lead`, `naglowek`, `podtytul`, `punkty[]`, `uwaga`, `obraz` (np. `certyfikaty_gwarancji.jpg` z `template/img`), `opis_obrazu` – np. bez punktu o implantach, gdy ich nie ma w planie |
 | `os_czasu` | np. [["Wizyta I","3 dni / 2 noce"],["Gojenie","ok. 3 mies."],["Wizyta II","4 dni / 4 noce"]] |
 | `platnosci` | `wiersze` [wizyta, koszt, zaliczka, na miejscu], `razem` |
 | `rabat_html` | opcjonalnie blok rabatu (pokazywany raz) |
@@ -185,7 +185,7 @@ Format kwot w PL: `€1 402,00` (spacja tysięcy, przecinek dziesiętny); w EN: 
 
 ## 8. Schemat zębów (wizualizacja)
 
-Pełne zasady z przykładami i linkami: **`KATALOG_RYSUNKOW.md`**. Skrót:
+Pełne zasady z przykładami i linkami: **`KATALOG_RYSUNKOW_PL.md`**. Skrót:
 
 - Jeden schemat na wizytę. Wizyta I pokazuje stan po wizycie I (implanty, prace tymczasowe, ekstrakcje), wizyta II – stan końcowy (korony, mosty, protezy).
 - Układ: 32 zęby, FDI, górny łuk 18→28 (korzenie do góry), dolny 48→38 (korzenie w dół), linia środkowa i zgryzowa, numer nad/pod każdym zębem. **Strona prawa pacjenta = lewa strona obrazka.**
@@ -193,34 +193,34 @@ Pełne zasady z przykładami i linkami: **`KATALOG_RYSUNKOW.md`**. Skrót:
 - Numer zęba leczonego na danej wizycie – w turkusowej „pigułce”; ząb nieistniejący – szary, przekreślony numer, bez rysunku; ząb własny bez zabiegu – rysunek naturalnego zęba, szary numer.
 - Mosty – łącznik w kolorze korony za koronami (turkus dla stałych, bursztyn dla tymczasowych).
 - Podniesienie zatoki – rysunek zatoki nad zębem 16 i/lub 26 z podpisem „Podniesienie zatoki — prawa/lewa strona”.
-- Pełne łuki (All-on-4/6, proteza tymczasowa, hybrydowa, 12 koron) – gotowe rysunki łuków zamiast pojedynczych zębów. Gdy łuk jest razem z pojedynczymi zębami, wszystko w jednej skali: łuk wstawiony dokładnie w miejsce zębów, które obejmuje (`"arch"` w konfiguracji `schemat_zebow.py`, patrz KATALOG_RYSUNKOW.md rozdz. 4a). Nigdy nie skalować łuku i zębów osobno.
-- Rysunki pochodzą z biblioteki „New Common Dental Procedures 2026-11-08” na Google Drive (`biblioteka/drive_index.csv`), zęby naturalne – z `biblioteka/natural/`.
+- Pełne łuki (All-on-4/6, proteza tymczasowa, hybrydowa, 12 koron) – gotowe rysunki łuków zamiast pojedynczych zębów. Gdy łuk jest razem z pojedynczymi zębami, wszystko w jednej skali: łuk wstawiony dokładnie w miejsce zębów, które obejmuje (`"arch"` w konfiguracji `tooth_chart.py`, patrz KATALOG_RYSUNKOW_PL.md rozdz. 4a). Nigdy nie skalować łuku i zębów osobno.
+- Rysunki pochodzą z biblioteki „New Common Dental Procedures 2026-11-08” na Google Drive (`library/drive_index.csv`), zęby naturalne – z `library/natural_teeth/`.
 - **Nie zastępujemy oryginalnego schematu kliniki** w kalkulacji: oryginalną stronę RTG/schematu z PDF kliniki wyodrębniamy jako JPG (`Imie_Nazwisko_plan_leczenia_PELNY.jpg`) i dołączamy do dokumentacji.
 
 ## 9. Eksport PDF
 
 ```bash
-cd skill-plan-leczenia/skrypty
-# 0) jednorazowo: wszystkie PNG z Drive (biblioteka/drive_index.csv) do jednego płaskiego folderu <folder_biblioteki_PNG>
+cd treatment-plan-skill/scripts
+# 0) jednorazowo: wszystkie PNG z Drive (library/drive_index.csv) do jednego płaskiego folderu <folder_biblioteki_PNG>
 #    + przęsła tymczasowe, których nie ma na Drive:
-python3 zrob_przesla_tymczasowe.py <folder_biblioteki_PNG> <folder_biblioteki_PNG>
-#    (zęby naturalne są gotowe w ../biblioteka/natural; odtworzenie: zrob_zeby_naturalne.py)
+python3 make_temp_pontics.py <folder_biblioteki_PNG> <folder_biblioteki_PNG>
+#    (zęby naturalne są gotowe w ../library/natural_teeth; odtworzenie: make_natural_teeth.py)
 # 1) schematy (po jednym na wizytę), zmniejszone do 1500 px
-python3 schemat_zebow.py <folder_biblioteki_PNG> ../biblioteka/natural wizyta1.png wizyta1.json
-python3 dodaj_zatoki.py wizyta1.png <sinus_lift_one_side.png> wizyta1.jpg prawa|lewa|obie   # tylko gdy jest podniesienie zatoki
+python3 tooth_chart.py <folder_biblioteki_PNG> ../library/natural_teeth wizyta1.png wizyta1.json
+python3 add_sinus_lift.py wizyta1.png <sinus_lift_one_side.png> wizyta1.jpg prawa|lewa|obie   # tylko gdy jest podniesienie zatoki
 # 2) HTML oferty
-python3 buduj_oferte.py pacjent.json out/
+python3 build_offer.py pacjent.json out/
 # 3) styl v7
-python3 popraw_v7.py out/oferta-esnan-pl-Imie-Nazwisko.html out/v7.html <folder_ze_zdjeciami_lub_pusty>
+python3 apply_v7_style.py out/oferta-esnan-pl-Imie-Nazwisko.html out/v7.html <folder_ze_zdjeciami_lub_pusty>
 # 4) PDF na telefon (520 px, jedna długa strona, reguły @media(max-width:700px) wymuszone)
-node topdf.js out/v7.html out/Plan-leczenia-Esnan-pl-Imie-Nazwisko.pdf 520
+node to_pdf.js out/v7.html out/Plan-leczenia-Esnan-pl-Imie-Nazwisko.pdf 520
 ```
 Wymagania: Python 3 + Pillow, Node + Playwright (Chromium), font Inter (`/usr/share/fonts/opentype/inter/`), dostęp do Google Fonts (Manrope, Karla) przy renderowaniu.
 
-`topdf.js`: ustawia szerokość okna 520 px, zamienia `@media(max-width:700px)` na `@media all`, wyłącza cienie, czeka na fonty, drukuje jedną stronę o wysokości całego dokumentu z tłem `#162447`.
+`to_pdf.js`: ustawia szerokość okna 520 px, zamienia `@media(max-width:700px)` na `@media all`, wyłącza cienie, czeka na fonty, drukuje jedną stronę o wysokości całego dokumentu z tłem `#162447`.
 
 ## 10. Wersja angielska
-Ten sam układ i te same zasady; teksty z `T['en']`, nazwa pliku `Plan-leczenia-Esnan-en-Imie-Nazwisko.pdf`, podpisy zatok `Sinus lift — right/left side` (`dodaj_zatoki.py … en`). Nazwy: „Medentika by Straumann implant (Germany)”, „Amann Girrbach or Ivoclar zirconia crown”.
+Ten sam układ i te same zasady; teksty z `T['en']`, nazwa pliku `Plan-leczenia-Esnan-en-Imie-Nazwisko.pdf`, podpisy zatok `Sinus lift — right/left side` (`add_sinus_lift.py … en`). Nazwy: „Medentika by Straumann implant (Germany)”, „Amann Girrbach or Ivoclar zirconia crown”.
 
 ## 11. Kontrola jakości (przed wysłaniem)
 
@@ -249,11 +249,11 @@ Ten sam układ i te same zasady; teksty z `T['en']`, nazwa pliku `Plan-leczenia-
 | Wyróżnienia niewidoczne na iPhonie | `text-decoration` zamiast `linear-gradient` |
 | Zmiana kolorów nagłówków bez prośby | trzymać się wzoru |
 | Poprawiony starszy plan bez prośby | nie ruszać starszych planów |
-| Pozostałości tekstów z poprzedniego pacjenta (dostawka, opisy filmów, podwójna oś czasu) | dane pacjenta tylko z JSON; szablon bez treści pacjenta |
+| Pozostałości tekstów z poprzedniego pacjenta (dostawka, opisy filmów, podwójna oś czasu) | dane pacjenta tylko z JSON; template bez treści pacjenta |
 | „Emax” zamiast Empress | Empress Veneer = korona porcelanowa Empress; Laminate Veneer = licówka |
 | Podniesienie zatoki narysowane nieczytelnie | rysunek zatoki nad 16/26 z podpisem strony |
 | Wersja „telefon” w nazwie / wersja desktop | tylko 520 px, nazwa bez „telefon” |
 
 ## 13. Pytania otwarte do IT
-- Biblioteka PNG ma być pobierana z Drive przy każdym generowaniu, czy trzymana lokalnie (ZIP ~120 MB „New Common Dental Procedures 2026-11-08.zip”)? Zęby naturalne są tylko w tym repozytorium (`biblioteka/natural/`).
-- Zdjęcia szablonu w `szablon/img` to wersja odtworzona; oryginały w wysokiej jakości są na Macu Pauliny (`~/Desktop/filmy-claude/oferta-esnan/_narzedzia/obrazki-v7/`) – można je podmienić przez `popraw_v7.py <…> <folder_ze_zdjeciami>`.
+- Biblioteka PNG ma być pobierana z Drive przy każdym generowaniu, czy trzymana lokalnie (ZIP ~120 MB „New Common Dental Procedures 2026-11-08.zip”)? Zęby naturalne są tylko w tym repozytorium (`library/natural_teeth/`).
+- Zdjęcia templateu w `template/img` to wersja odtworzona; oryginały w wysokiej jakości są na Macu Pauliny (`~/Desktop/filmy-claude/oferta-esnan/_narzedzia/obrazki-v7/`) – można je podmienić przez `apply_v7_style.py <…> <folder_ze_zdjeciami>`.

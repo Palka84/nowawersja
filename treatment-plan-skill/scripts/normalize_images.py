@@ -14,9 +14,9 @@ Solution (same as the Fly4Smile offer charts): every file gets a canvas of FIXED
   • missing tooth:       missing_XX.png – transparent canvas of the tooth-position width.
 SYSTEM REQUIREMENT: all images in a row have the same HEIGHT and automatic width
 (CSS: .row{display:flex;justify-content:center;gap:1px} .row img{height:96px;width:auto}),
-not equal-width cells. Full spec: IT_SPEC_image_proportions_EN.md.
+not equal-width cells. Full spec: IMAGE_PROPORTIONS_SPEC.md.
 
-Usage: python3 normalizuj_rysunki.py <input_PNG_folder> <output_folder>
+Usage: python3 normalize_images.py <input_PNG_folder> <output_folder>
 (file names unchanged; upper/lower jaw and full arches are detected from the file name;
 the input folder must contain zirconia_crown_11 … zirconia_crown_48 – they define the position widths)."""
 import sys, os, re, glob

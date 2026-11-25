@@ -1,6 +1,6 @@
 English version for the IT team. The Polish original is SKILL.md; if they differ, ask Paulina.
 
-> For the image-proportion rules for the system, see **IT_SPEC_image_proportions_EN.md** (short, self-contained spec).
+> For the image-proportion rules for the system, see **IMAGE_PROPORTIONS_SPEC.md** (short, self-contained spec).
 
 ---
 name: plan-leczenia-esnan
@@ -16,14 +16,14 @@ Files in this folder:
 | Path | What it is |
 |---|---|
 | `SKILL.md` | this document (Polish original) – all rules and the process |
-| `KATALOG_RYSUNKOW.md` | what we draw in which situation, with examples and links to Google Drive |
-| `katalog/` | sample charts (JPG) and their configurations (JSON) for each situation |
-| `biblioteka/drive_index.csv` | list of all drawings on Google Drive with links (file by file) |
-| `biblioteka/arkusz_procedur.csv` | export of the spreadsheet "New Common Dental Procedures 2026-11-08" (procedures, prices, which images) |
-| `biblioteka/natural/` | drawings of natural teeth `natural_11.png` … `natural_48.png` (they are not on Drive) |
-| `skrypty/` | generators: tooth chart, full arches, sinuses, HTML offer, v7 style, PDF export |
-| `szablon/` | offer template (HTML v5 with CSS) and fixed photos (logo, clinic, certificates, reviews, videos) |
-| `przyklad/` | complete example: patient JSON → charts → basic and detailed PDF |
+| `KATALOG_RYSUNKOW_PL.md` | what we draw in which situation, with examples and links to Google Drive |
+| `catalog/` | sample charts (JPG) and their configurations (JSON) for each situation |
+| `library/drive_index.csv` | list of all drawings on Google Drive with links (file by file) |
+| `library/procedures_sheet.csv` | export of the spreadsheet "New Common Dental Procedures 2026-11-08" (procedures, prices, which images) |
+| `library/natural_teeth/` | drawings of natural teeth `natural_11.png` … `natural_48.png` (they are not on Drive) |
+| `scripts/` | generators: tooth chart, full arches, sinuses, HTML offer, v7 style, PDF export |
+| `template/` | offer template (HTML v5 with CSS) and fixed photos (logo, clinic, certificates, reviews, videos) |
+| `example/` | complete example: patient JSON → charts → basic and detailed PDF |
 | `../cennik/Esnan_cennik_2026-06-19.csv` / `.pdf` | the clinic's current price list (cennik) |
 | `../CLAUDE.md` | summary of the most important rules (standing agreements with Paulina) |
 
@@ -50,7 +50,7 @@ Clinic PDF ──► 1. reading ──► 2. verification ──► 3. INTERNAL 
 2. **Verification**: first name and surname, the quantity of each procedure, unit prices vs the price list (chapter 3), visit totals, transfers (240 EUR/visit – whether they are already included in the clinic's amount), regular total and discount. We **report** every discrepancy; we do not silently correct it.
 3. **Internal calculation** (chapter 6) – this is the first output. We prepare the offer only after Paulina's approval, unless she directly asks for a finished offer.
 4. **Reading the X-ray / clinic chart** (chapter 5): which teeth the patient has, which are missing, where existing bridges and crowns are, where the clinic marked procedures. On this basis, the tooth numbers (FDI) for each item.
-5. **Tooth charts** – one per visit (chapter 8 and `KATALOG_RYSUNKOW.md`).
+5. **Tooth charts** – one per visit (chapter 8 and `KATALOG_RYSUNKOW_PL.md`).
 6. **Offer HTML** from the template (chapter 7) – basic or detailed.
 7. **PDF in the phone version** (chapter 9).
 8. **Quality check** (chapter 11), and only then send to Paulina with a short summary and a list of open questions.
@@ -169,7 +169,7 @@ The offers are generated in Polish, so the mandatory wording is given in Polish,
 - Images compressed (charts 1500 px, JPG q≈74) so the file is not too large (~2–3 MB).
 
 ### 7.3 Generator input data (patient JSON)
-`skrypty/buduj_oferte.py` reads a single JSON file – see `przyklad/pacjent_przyklad.json`:
+`scripts/build_offer.py` reads a single JSON file – see `example/example_patient.json`:
 
 | Field | Description |
 |---|---|
@@ -181,7 +181,7 @@ The offers are generated in Polish, so the mandatory wording is given in Polish,
 | `wizyty[]` | visits: `tytul` (title), `krotko` (short label, e.g. "wizyta I" – "visit I"), `pobyt` (length of stay, "3 dni / 2 noce" – "3 days / 2 nights"), `schemat` (path to the chart JPG, relative to the JSON), `pozycje[]` (items: `luk` (arch): "Szczęka górna" / "Żuchwa" / "Dodatkowo" – "Upper jaw" / "Lower jaw" / "Additionally", `opis` (description), `ilosc` (quantity): "2×"), `koszt` (cost); for the detailed offer: `koszt_leczenia` (treatment cost) and `koszty_organizacyjne` (organisational costs) (`wiersze` (rows) [procedure, quantity, unit price, total], `suma` (total) [label, amount]) |
 | `opcje[]` | options: instead of `wizyty`, when the offer has several options: `nazwa` (name), optionally `opis` (description), `wizyty[]` (as above); in that case `platnosci.naglowki` (headers) = ["Opcja / wizyta" ("Option / visit"), …], and `platnosci.razem` (total) = list [label, amount] – one total per option |
 | `naglowek_planu`, `podtytul` | plan heading and subtitle; optional – e.g. „Protetyczny plan leczenia” ("Prosthetic treatment plan") when there are no implants |
-| `gwarancja` | warranty; optional: `lead`, `naglowek` (heading), `podtytul` (subtitle), `punkty[]` (points), `uwaga` (note), `obraz` (image, e.g. `certyfikaty_gwarancji.jpg` from `szablon/img`), `opis_obrazu` (image caption) – e.g. without the implant point when there are no implants in the plan |
+| `gwarancja` | warranty; optional: `lead`, `naglowek` (heading), `podtytul` (subtitle), `punkty[]` (points), `uwaga` (note), `obraz` (image, e.g. `certyfikaty_gwarancji.jpg` from `template/img`), `opis_obrazu` (image caption) – e.g. without the implant point when there are no implants in the plan |
 | `os_czasu` | timeline, e.g. [["Wizyta I","3 dni / 2 noce"],["Gojenie","ok. 3 mies."],["Wizyta II","4 dni / 4 noce"]] (["Visit I","3 days / 2 nights"],["Healing","approx. 3 months"],["Visit II","4 days / 4 nights"]) |
 | `platnosci` | payments: `wiersze` (rows) [visit, cost, deposit, on site], `razem` (total) |
 | `rabat_html` | optional discount block (shown once) |
@@ -191,7 +191,7 @@ Amount format in PL: `€1 402,00` (space as thousands separator, decimal comma)
 
 ## 8. Tooth chart (visualisation)
 
-Full rules with examples and links: **`KATALOG_RYSUNKOW.md`** (English version: `DRAWING_CATALOG_EN.md`). Summary:
+Full rules with examples and links: **`KATALOG_RYSUNKOW_PL.md`** (English version: `DRAWING_CATALOG.md`). Summary:
 
 - One chart per visit. Visit I shows the state after visit I (implants, temporary prostheses, extractions), visit II – the final state (crowns, bridges, dentures/prostheses).
 - Layout: 32 teeth, FDI, upper arch 18→28 (roots pointing up), lower arch 48→38 (roots pointing down), midline and occlusal line, number above/below each tooth. **Patient's right side = left side of the image.**
@@ -199,34 +199,34 @@ Full rules with examples and links: **`KATALOG_RYSUNKOW.md`** (English version: 
 - Number of a tooth treated at the given visit – in a turquoise "pill"; non-existent tooth – grey, crossed-out number, no drawing; own tooth without a procedure – drawing of a natural tooth, grey number.
 - Bridges – a connector in the crown's colour behind the crowns (turquoise for fixed, amber for temporary).
 - Sinus lift – drawing of the sinus above tooth 16 and/or 26 with the caption „Podniesienie zatoki — prawa/lewa strona” ("Sinus lift — right/left side").
-- Full arches (All-on-4/6, temporary prosthesis, hybrid, 12 crowns) – ready-made arch drawings instead of individual teeth. When an arch appears together with individual teeth, everything is at one scale: the arch is inserted exactly in place of the teeth it covers (`"arch"` in the `schemat_zebow.py` configuration, see KATALOG_RYSUNKOW.md chapter 4a). Never scale the arch and the teeth separately.
-- The drawings come from the library "New Common Dental Procedures 2026-11-08" on Google Drive (`biblioteka/drive_index.csv`), natural teeth – from `biblioteka/natural/`.
+- Full arches (All-on-4/6, temporary prosthesis, hybrid, 12 crowns) – ready-made arch drawings instead of individual teeth. When an arch appears together with individual teeth, everything is at one scale: the arch is inserted exactly in place of the teeth it covers (`"arch"` in the `tooth_chart.py` configuration, see KATALOG_RYSUNKOW_PL.md chapter 4a). Never scale the arch and the teeth separately.
+- The drawings come from the library "New Common Dental Procedures 2026-11-08" on Google Drive (`library/drive_index.csv`), natural teeth – from `library/natural_teeth/`.
 - **We do not replace the clinic's original chart** in the calculation: we extract the original X-ray/chart page from the clinic PDF as a JPG (`Imie_Nazwisko_plan_leczenia_PELNY.jpg`) and attach it to the documentation.
 
 ## 9. PDF export
 
 ```bash
-cd skill-plan-leczenia/skrypty
-# 0) one-off: all PNGs from Drive (biblioteka/drive_index.csv) into a single flat folder <folder_biblioteki_PNG>
+cd treatment-plan-skill/scripts
+# 0) one-off: all PNGs from Drive (library/drive_index.csv) into a single flat folder <folder_biblioteki_PNG>
 #    + temporary pontics, which are not on Drive:
-python3 zrob_przesla_tymczasowe.py <folder_biblioteki_PNG> <folder_biblioteki_PNG>
-#    (natural teeth are ready in ../biblioteka/natural; to regenerate: zrob_zeby_naturalne.py)
+python3 make_temp_pontics.py <folder_biblioteki_PNG> <folder_biblioteki_PNG>
+#    (natural teeth are ready in ../library/natural_teeth; to regenerate: make_natural_teeth.py)
 # 1) charts (one per visit), downscaled to 1500 px
-python3 schemat_zebow.py <folder_biblioteki_PNG> ../biblioteka/natural wizyta1.png wizyta1.json
-python3 dodaj_zatoki.py wizyta1.png <sinus_lift_one_side.png> wizyta1.jpg prawa|lewa|obie   # only when there is a sinus lift (prawa = right, lewa = left, obie = both)
+python3 tooth_chart.py <folder_biblioteki_PNG> ../library/natural_teeth wizyta1.png wizyta1.json
+python3 add_sinus_lift.py wizyta1.png <sinus_lift_one_side.png> wizyta1.jpg prawa|lewa|obie   # only when there is a sinus lift (prawa = right, lewa = left, obie = both)
 # 2) offer HTML
-python3 buduj_oferte.py pacjent.json out/
+python3 build_offer.py pacjent.json out/
 # 3) v7 style
-python3 popraw_v7.py out/oferta-esnan-pl-Imie-Nazwisko.html out/v7.html <folder_ze_zdjeciami_lub_pusty>
+python3 apply_v7_style.py out/oferta-esnan-pl-Imie-Nazwisko.html out/v7.html <folder_ze_zdjeciami_lub_pusty>
 # 4) PDF for phone (520 px, one long page, @media(max-width:700px) rules forced on)
-node topdf.js out/v7.html out/Plan-leczenia-Esnan-pl-Imie-Nazwisko.pdf 520
+node to_pdf.js out/v7.html out/Plan-leczenia-Esnan-pl-Imie-Nazwisko.pdf 520
 ```
 Requirements: Python 3 + Pillow, Node + Playwright (Chromium), Inter font (`/usr/share/fonts/opentype/inter/`), access to Google Fonts (Manrope, Karla) during rendering.
 
-`topdf.js`: sets the window width to 520 px, replaces `@media(max-width:700px)` with `@media all`, disables shadows, waits for fonts, prints a single page with the height of the whole document on a `#162447` background.
+`to_pdf.js`: sets the window width to 520 px, replaces `@media(max-width:700px)` with `@media all`, disables shadows, waits for fonts, prints a single page with the height of the whole document on a `#162447` background.
 
 ## 10. English version
-Same layout and same rules; texts from `T['en']`, file name `Plan-leczenia-Esnan-en-Imie-Nazwisko.pdf`, sinus captions `Sinus lift — right/left side` (`dodaj_zatoki.py … en`). Names: "Medentika by Straumann implant (Germany)", "Amann Girrbach or Ivoclar zirconia crown".
+Same layout and same rules; texts from `T['en']`, file name `Plan-leczenia-Esnan-en-Imie-Nazwisko.pdf`, sinus captions `Sinus lift — right/left side` (`add_sinus_lift.py … en`). Names: "Medentika by Straumann implant (Germany)", "Amann Girrbach or Ivoclar zirconia crown".
 
 ## 11. Quality check (before sending)
 
@@ -261,5 +261,5 @@ Same layout and same rules; texts from `T['en']`, file name `Plan-leczenia-Esnan
 | Version "telefon" ("phone") in the name / desktop version | only 520 px, name without "telefon" |
 
 ## 13. Open questions for IT
-- Should the PNG library be downloaded from Drive on every generation, or kept locally (ZIP ~120 MB "New Common Dental Procedures 2026-11-08.zip")? The natural teeth exist only in this repository (`biblioteka/natural/`).
-- The template photos in `szablon/img` are a reconstructed version; the high-quality originals are on Paulina's Mac (`~/Desktop/filmy-claude/oferta-esnan/_narzedzia/obrazki-v7/`) – they can be swapped in via `popraw_v7.py <…> <folder_ze_zdjeciami>`.
+- Should the PNG library be downloaded from Drive on every generation, or kept locally (ZIP ~120 MB "New Common Dental Procedures 2026-11-08.zip")? The natural teeth exist only in this repository (`library/natural_teeth/`).
+- The template photos in `template/img` are a reconstructed version; the high-quality originals are on Paulina's Mac (`~/Desktop/filmy-claude/oferta-esnan/_narzedzia/obrazki-v7/`) – they can be swapped in via `apply_v7_style.py <…> <folder_ze_zdjeciami>`.
