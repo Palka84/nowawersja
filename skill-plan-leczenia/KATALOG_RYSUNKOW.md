@@ -102,9 +102,22 @@ Przykład: [katalog/17_pelny_luk_z_pojedynczymi_zebami.jpg](katalog/17_pelny_luk
 System ofert wkleja każdy plik do osobnego pola o równej szerokości (16 pól w rzędzie, object-fit: contain). Przycięte pliki dostają wtedy różną skalę, a zęby nie stykają się jak w naturze.
 
 **Pliki (biblioteka „do systemu”, skrypt `skrypty/normalizuj_rysunki.py`):**
-- każdy plik ma tę samą wysokość płótna: **940 px**; szerokość = szerokość zęba + 4 px z każdej strony (bez pustych pól);
+- każdy plik ma tę samą wysokość płótna: **940 px**;
+- szerokość płótna = **szerokość miejsca zęba** (szerokość korony cyrkonowej tego zęba + 4 px z boków), element na środku – tabela niżej; dzięki temu implant, przęsło czy korona tymczasowa zajmują tyle miejsca co ząb;
 - szczęka: krawędź zgryzowa 30 px nad dolną krawędzią płótna; żuchwa: 30 px pod górną; sam implant: platforma 265 px od krawędzi zgryzowej;
-- pełny łuk: ta sama wysokość 940 px, szerokość = szerokość łuku; rysunków nie skalujemy (32,7 px = 1 mm).
+- pełny łuk: wysokość 940 px, szerokość = suma miejsc 16–26 (46–36);
+- **brak zęba: `missing_XX.png`** – przezroczyste miejsce o szerokości zęba (żeby luka była widoczna, a sąsiednie zęby się nie przesuwały);
+- rysunków nie skalujemy (32,7 px = 1 mm).
+
+Szerokość miejsca zęba (px na płótnie 940 px wysokości):
+
+| szczęka | 18 | 17 | 16 | 15 | 14 | 13 | 12 | 11 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| px | 289 | 305 | 337 | 239 | 239 | 255 | 223 | 289 | 289 | 223 | 255 | 239 | 239 | 337 | 305 | 289 |
+
+| żuchwa | 48 | 47 | 46 | 45 | 44 | 43 | 42 | 41 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| px | 337 | 353 | 369 | 238 | 239 | 239 | 190 | 174 | 174 | 190 | 239 | 239 | 238 | 369 | 353 | 337 |
 
 **System (jedna zmiana w CSS):** zamiast równych pól – rząd flex, wszystkie obrazki tej samej wysokości, szerokość automatyczna:
 ```css
@@ -114,6 +127,13 @@ System ofert wkleja każdy plik do osobnego pola o równej szerokości (16 pól 
 ```
 Numer zęba w tej samej kolumnie co obrazek (nad szczęką, pod żuchwą). Pełny łuk = jedna kolumna z numerami 16–26.
 Gotowy przykład: `przyklad_system/schemat_przyklad.html` (otwórz w przeglądarce).
+
+**Test krzyżowy (6 planów: implanty z brakami, prace tymczasowe, mosty na implantach, All-on-6 z pojedynczymi zębami, korony w obu łukach, ekstrakcje i licówki):** układ z samych obrazków w HTML zgadza się ze schematami z ofert – skala, szerokości, luki po brakach, implanty bez koron, pełny łuk. Rzeczy, które system musi dorysować sam (nie są w obrazkach):
+1. **łącznik mostu** – pasek w kolorze korony (turkus, przy pracach tymczasowych bursztyn #E2AA5A) za koronami od pierwszego do ostatniego zęba mostu;
+2. **numer brakującego zęba** – szary i przekreślony;
+3. **numery pod/nad pełnym łukiem** – rozłożone wg szerokości z tabeli (nie równo).
+
+![test krzyżowy](katalog/20_test_krzyzowy_oferta_vs_system.jpg)
 
 ![system po normalizacji](katalog/19_system_po_normalizacji.png)
 
