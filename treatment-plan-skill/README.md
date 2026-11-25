@@ -18,7 +18,7 @@ The **offers themselves are in Polish** (patients are Polish). All documentation
 | Folder | Content |
 |---|---|
 | `scripts/` | `tooth_chart.py` (tooth chart), `full_arch_chart.py`, `add_sinus_lift.py`, `sinus_without_implants_chart.py`, `build_offer.py` (offer HTML from patient JSON), `apply_v7_style.py` (final style), `to_pdf.js` (520 px phone PDF), `normalize_images.py` (image library → system format), `make_natural_teeth.py`, `make_temp_pontics.py`, `generate_catalog.py` (Polish catalog) |
-| `library/` | `drive_index.csv` – every drawing on Google Drive with its link; `procedures_sheet.csv` – procedure sheet export; `natural_teeth/` – natural-tooth drawings (not on Drive) |
+| `library/` | `PROCEDURES_AND_FILES_INDEX.xlsx` (+ `PROCEDURES_INDEX.csv`, `FILES_INDEX.csv`) – every procedure with its image folder, file pattern and files of the normalized library; `drive_index.csv` – every original drawing on Google Drive with its link; `procedures_sheet.csv` – procedure sheet export; `natural_teeth/` – natural-tooth drawings |
 | `catalog/` | Example chart for every situation (`*.jpg`) and its chart config (`*.json`) |
 | `example/` | Complete example: `example_patient.json` (basic offer), `example_patient_detailed.json` (detailed offer), chart configs, resulting PDFs (`example_offer_basic_PL.pdf`, `example_offer_detailed_PL.pdf`) |
 | `system_example/` | `tooth_chart_example.html` – the chart built only from normalized images + CSS (reference for the system) |
