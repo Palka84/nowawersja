@@ -1,24 +1,24 @@
-"""KLUCZ PROPORCJI – przygotowanie rysunków pod system, który wkleja każdy obrazek
-osobno do pola (object-fit: contain).
+"""IMAGE PROPORTION KEY – prepares the tooth-image library for a system that places each image separately.
 
-Problem: system skaluje każdy plik do swojego pola niezależnie, więc ząb przycięty
-ciasno (np. siekacz 230 px szerokości) i trzonowiec (361 px) wychodzą w różnej skali,
-a pełny łuk (2991 px szerokości) rozciąga się na całą szerokość 11 pól.
+Problem: the system fitted every file into its own equal-width cell (object-fit: contain), so tightly
+cropped images (incisor 230 px wide, molar 361 px) ended up at different scales and a full arch
+stretched across 11 cells.
 
-Rozwiązanie (tak jak w schematach Fly4Smile): każdy plik dostaje płótno o STAŁEJ WYSOKOŚCI 940 px
-(wspólna skala 32,7 px = 1 mm), a szerokość płótna = szerokość MIEJSCA zęba (= szerokość korony cyrkonowej tego zęba + 4 px z boków), element na środku:
-  • szczęka (1x, 2x):   krawędź zgryzowa korony 30 px nad dolną krawędzią płótna (korzenie w górę),
-  • żuchwa (3x, 4x):    krawędź zgryzowa korony 30 px pod górną krawędzią płótna (korzenie w dół),
-  • sam implant (bez korony): platforma implantu 265 px od krawędzi zgryzowej,
-  • pełny łuk:          ta sama wysokość 940 px, szerokość = suma szerokości miejsc 16–26 (46–36),
-  • brak zęba:          missing_XX.png – przezroczyste miejsce o szerokości zęba.
-WARUNEK PO STRONIE SYSTEMU: obrazki w rzędzie mają tę samą WYSOKOŚĆ i szerokość automatyczną
-(np. CSS: .row{display:flex;justify-content:center;gap:2px} .row img{height:116px;width:auto}),
-a nie równe pola. Wtedy każdy ząb ma swoją naturalną szerokość, zęby stykają się jak w naturze,
-a pełny łuk zajmuje dokładnie miejsce zębów, które zastępuje. Numer zęba – w tej samej kolumnie co obrazek.
+Solution (same as the Fly4Smile offer charts): every file gets a canvas of FIXED HEIGHT 940 px
+(common scale 32.7 px = 1 mm, drawings are never rescaled); canvas width = TOOTH-POSITION WIDTH
+(width of that tooth's zirconia crown + 4 px on each side), element centred:
+  • upper jaw (1x, 2x):  occlusal edge of the crown 30 px above the bottom of the canvas (roots up),
+  • lower jaw (3x, 4x):  occlusal edge 30 px below the top of the canvas (roots down),
+  • implant without crown: implant platform 265 px from the occlusal line,
+  • full arch:           height 940 px, width = sum of positions 16–26 (46–36),
+  • missing tooth:       missing_XX.png – transparent canvas of the tooth-position width.
+SYSTEM REQUIREMENT: all images in a row have the same HEIGHT and automatic width
+(CSS: .row{display:flex;justify-content:center;gap:1px} .row img{height:96px;width:auto}),
+not equal-width cells. Full spec: IT_SPEC_image_proportions_EN.md.
 
-Użycie: python3 normalizuj_rysunki.py <folder_wejściowy_PNG> <folder_wyjściowy>
-(nazwy plików bez zmian; rozpoznaje szczękę/żuchwę i pełne łuki po nazwie)."""
+Usage: python3 normalizuj_rysunki.py <input_PNG_folder> <output_folder>
+(file names unchanged; upper/lower jaw and full arches are detected from the file name;
+the input folder must contain zirconia_crown_11 … zirconia_crown_48 – they define the position widths)."""
 import sys, os, re, glob
 from PIL import Image
 
@@ -26,7 +26,7 @@ CH, EDGE, IMPL_OFF, SIDE = 940, 30, 265, 4
 
 UPR = [18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28]
 LOR = [48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38]
-REFW = {}   # szerokość miejsca każdego zęba = szerokość zirconia_crown_XX + 2×SIDE
+REFW = {}   # tooth-position width = zirconia_crown_XX width + 2×SIDE
 
 def load_ref(folder):
     for n in UPR + LOR:
@@ -35,13 +35,13 @@ def load_ref(folder):
             b = Image.open(f).getbbox(); REFW[n] = (b[2]-b[0]) + 2*SIDE
 
 def missing(folder_out):
-    """missing_XX.png – przezroczyste miejsce po brakującym zębie (system wstawia je w miejsce braku)."""
+    """missing_XX.png – transparent placeholder for a missing tooth."""
     for n, w in REFW.items():
         Image.new("RGBA", (w, CH), (0,0,0,0)).save(os.path.join(folder_out, f"missing_{n}.png"))
 
 def upper_of(name):
     m = re.search(r"_(\d)\d\.png$", name)
-    if m: return m.group(1) in "1256"          # 1x, 2x (mleczne 5x, 6x) = szczęka
+    if m: return m.group(1) in "1256"          # 1x, 2x (primary 5x, 6x) = upper jaw
     return "upper" in name
 
 def norm(src, dst):
@@ -55,11 +55,11 @@ def norm(src, dst):
         row = UPR if up else LOR
         w = sum(REFW[t] for t in row[row.index(16 if up else 46):row.index(26 if up else 36)+1]) if REFW else im.width + 2*SIDE
     elif n in REFW:
-        w = max(REFW[n], im.width + 2*SIDE)    # szerokość miejsca zęba (jak korona cyrkonowa tego zęba)
+        w = max(REFW[n], im.width + 2*SIDE)    # tooth-position width
     else:
         w = im.width + 2 * SIDE
     if im.height > CH - EDGE:
-        print("UWAGA – nie mieści się, sprawdź:", name, im.size)
+        print("WARNING – does not fit, check:", name, im.size)
     c = Image.new("RGBA", (w, CH), (0, 0, 0, 0))
     off = IMPL_OFF if re.match(r"(zirconia_)?implant_\d\d\.png$", name) else 0
     x = (w - im.width) // 2
@@ -73,4 +73,4 @@ if __name__ == "__main__":
     for f in sorted(glob.glob(os.path.join(a, "*.png"))):
         if "sinus" in f: continue
         norm(f, os.path.join(b, os.path.basename(f)))
-    print("gotowe")
+    print("done")
