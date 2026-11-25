@@ -96,6 +96,17 @@ Przykład: [katalog/17_pelny_luk_z_pojedynczymi_zebami.jpg](katalog/17_pelny_luk
 
 ![pełny łuk z pojedynczymi zębami](katalog/17_pelny_luk_z_pojedynczymi_zebami.jpg)
 
+
+## 4b. Klucz proporcji dla systemu, który wkleja każdy obrazek osobno
+
+System ofert (IT) wkleja każdy plik do osobnego pola (16 równych pól w rzędzie, object-fit: contain). Pliki przycięte do zęba dostają wtedy różne skale. Rozwiązanie: wersja biblioteki z płótnami o stałej wysokości (`skrypty/normalizuj_rysunki.py`):
+- pojedynczy element: płótno 380 × 940 px, ząb na środku; szczęka – krawędź zgryzowa 30 px nad dolną krawędzią, żuchwa – 30 px pod górną; sam implant – platforma 265 px od krawędzi zgryzowej;
+- pełny łuk: płótno 11 × 380 = 4180 × 940 px (16–26 / 46–36), łuk na środku;
+- bez skalowania rysunków (32,7 px = 1 mm).
+Pole jednego zęba w systemie: proporcja 380:940 (np. 47 × 116 px); pole łuku = n pól obok siebie, ta sama wysokość.
+
+![symulacja](katalog/18_symulacja_klucz_proporcji.jpg)
+
 ## 5. Przykłady (podgląd)
 
 ### 01 stan wyjsciowy
