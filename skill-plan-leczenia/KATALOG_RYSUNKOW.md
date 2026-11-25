@@ -97,15 +97,25 @@ Przykład: [katalog/17_pelny_luk_z_pojedynczymi_zebami.jpg](katalog/17_pelny_luk
 ![pełny łuk z pojedynczymi zębami](katalog/17_pelny_luk_z_pojedynczymi_zebami.jpg)
 
 
-## 4b. Klucz proporcji dla systemu, który wkleja każdy obrazek osobno
+## 4b. Klucz proporcji dla systemu ofert (IT)
 
-System ofert (IT) wkleja każdy plik do osobnego pola (16 równych pól w rzędzie, object-fit: contain). Pliki przycięte do zęba dostają wtedy różne skale. Rozwiązanie: wersja biblioteki z płótnami o stałej wysokości (`skrypty/normalizuj_rysunki.py`):
-- pojedynczy element: płótno 380 × 940 px, ząb na środku; szczęka – krawędź zgryzowa 30 px nad dolną krawędzią, żuchwa – 30 px pod górną; sam implant – platforma 265 px od krawędzi zgryzowej;
-- pełny łuk: płótno 11 × 380 = 4180 × 940 px (16–26 / 46–36), łuk na środku;
-- bez skalowania rysunków (32,7 px = 1 mm).
-Pole jednego zęba w systemie: proporcja 380:940 (np. 47 × 116 px); pole łuku = n pól obok siebie, ta sama wysokość.
+System ofert wkleja każdy plik do osobnego pola o równej szerokości (16 pól w rzędzie, object-fit: contain). Przycięte pliki dostają wtedy różną skalę, a zęby nie stykają się jak w naturze.
 
-![symulacja](katalog/18_symulacja_klucz_proporcji.jpg)
+**Pliki (biblioteka „do systemu”, skrypt `skrypty/normalizuj_rysunki.py`):**
+- każdy plik ma tę samą wysokość płótna: **940 px**; szerokość = szerokość zęba + 4 px z każdej strony (bez pustych pól);
+- szczęka: krawędź zgryzowa 30 px nad dolną krawędzią płótna; żuchwa: 30 px pod górną; sam implant: platforma 265 px od krawędzi zgryzowej;
+- pełny łuk: ta sama wysokość 940 px, szerokość = szerokość łuku; rysunków nie skalujemy (32,7 px = 1 mm).
+
+**System (jedna zmiana w CSS):** zamiast równych pól – rząd flex, wszystkie obrazki tej samej wysokości, szerokość automatyczna:
+```css
+.row{display:flex;justify-content:center;gap:1px}
+.row.up{align-items:flex-end} .row.lo{align-items:flex-start}
+.row img{height:96px;width:auto}   /* 96 px mieści cały rząd na ekranie 520 px */
+```
+Numer zęba w tej samej kolumnie co obrazek (nad szczęką, pod żuchwą). Pełny łuk = jedna kolumna z numerami 16–26.
+Gotowy przykład: `przyklad_system/schemat_przyklad.html` (otwórz w przeglądarce).
+
+![system po normalizacji](katalog/19_system_po_normalizacji.png)
 
 ## 5. Przykłady (podgląd)
 
