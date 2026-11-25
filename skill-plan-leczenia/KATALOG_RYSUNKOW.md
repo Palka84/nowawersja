@@ -75,6 +75,27 @@ Folder: [Full Arch – Pełny łuk](https://drive.google.com/drive/folders/1Do85
 
 Implanty w pełnych łukach: All-on-6 – proste w 16/14/12/22/24/26 i 46/44/42/32/34/36; All-on-4 – proste 12/22 i 42/32, pochylone 35° w 15/25 i 45/35.
 
+
+## 4a. Pełny łuk razem z pojedynczymi zębami — proporcje
+
+Częsty błąd: każdy element skalowany osobno (np. łuk dopasowany do szerokości ekranu, a ósemki do stałej wysokości). Wtedy łuk jest ogromny, a zęby obok malutkie.
+
+**Zasada:** wszystkie rysunki biblioteki mają jedną skalę (32,7 px = 1 mm), więc:
+1. Liczymy jeden współczynnik skali dla całego schematu (z szerokości 16 zębów rzędu) — tak jak `schemat_zebow.py`.
+2. Rysunek pełnego łuku wstawiamy dokładnie w miejsce zębów, które obejmuje (np. All-on-6 górny = od lewej krawędzi zęba 16 do prawej krawędzi 26), dolną krawędzią koron na linii zgryzu. Szerokość łuku 16–26 w bibliotece (~2990 px) prawie równa się sumie szerokości pojedynczych koron 16–26, więc proporcje się zgadzają.
+3. Zęby poza łukiem (np. 18, 17, 27, 28) rysujemy normalnie, tą samą skalą.
+4. Numery zębów objętych łukiem — w turkusowej pigułce.
+
+Konfiguracja (`schemat_zebow.py`):
+```json
+{"state": {"46":"implant_crown","45":"implant_pontic","44":"implant_crown","34":"pontic"},
+ "bridges": [[46,44],[33,35]],
+ "arch": {"upper": {"file": "12_zirconia_crowns_upper_all-on-6.png", "from": 16, "to": 26}}}
+```
+Przykład: [katalog/17_pelny_luk_z_pojedynczymi_zebami.jpg](katalog/17_pelny_luk_z_pojedynczymi_zebami.jpg)
+
+![pełny łuk z pojedynczymi zębami](katalog/17_pelny_luk_z_pojedynczymi_zebami.jpg)
+
 ## 5. Przykłady (podgląd)
 
 ### 01 stan wyjsciowy

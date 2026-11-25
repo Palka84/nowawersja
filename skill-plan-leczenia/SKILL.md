@@ -193,7 +193,7 @@ Pełne zasady z przykładami i linkami: **`KATALOG_RYSUNKOW.md`**. Skrót:
 - Numer zęba leczonego na danej wizycie – w turkusowej „pigułce”; ząb nieistniejący – szary, przekreślony numer, bez rysunku; ząb własny bez zabiegu – rysunek naturalnego zęba, szary numer.
 - Mosty – łącznik w kolorze korony za koronami (turkus dla stałych, bursztyn dla tymczasowych).
 - Podniesienie zatoki – rysunek zatoki nad zębem 16 i/lub 26 z podpisem „Podniesienie zatoki — prawa/lewa strona”.
-- Pełne łuki (All-on-4/6, proteza tymczasowa, hybrydowa, 12 koron) – gotowe rysunki łuków zamiast pojedynczych zębów.
+- Pełne łuki (All-on-4/6, proteza tymczasowa, hybrydowa, 12 koron) – gotowe rysunki łuków zamiast pojedynczych zębów. Gdy łuk jest razem z pojedynczymi zębami, wszystko w jednej skali: łuk wstawiony dokładnie w miejsce zębów, które obejmuje (`"arch"` w konfiguracji `schemat_zebow.py`, patrz KATALOG_RYSUNKOW.md rozdz. 4a). Nigdy nie skalować łuku i zębów osobno.
 - Rysunki pochodzą z biblioteki „New Common Dental Procedures 2026-11-08” na Google Drive (`biblioteka/drive_index.csv`), zęby naturalne – z `biblioteka/natural/`.
 - **Nie zastępujemy oryginalnego schematu kliniki** w kalkulacji: oryginalną stronę RTG/schematu z PDF kliniki wyodrębniamy jako JPG (`Imie_Nazwisko_plan_leczenia_PELNY.jpg`) i dołączamy do dokumentacji.
 

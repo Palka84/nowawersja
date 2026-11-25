@@ -6,6 +6,13 @@ TEETH, NAT, OUT, CFG = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 cfg = json.load(open(CFG))
 st = {int(k): v for k, v in cfg["state"].items()}
 bridges = cfg.get("bridges", [])
+# pełne łuki: {"upper": {"file": "12_zirconia_crowns_upper_all-on-6.png", "from": 16, "to": 26}, "lower": {...}}
+ARCH = cfg.get("arch", {})
+ARCH_T = set()
+for _k, _a in ARCH.items():
+    _row = [18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28] if _k == "upper" else [48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38]
+    i1, i2 = sorted((_row.index(_a["from"]), _row.index(_a["to"])))
+    for n in _row[i1:i2+1]: ARCH_T.add(n); st[n] = "arch"
 BRC = tuple(cfg.get("bridge_color", [104,204,198]))
 W = 2400
 NAVY=(19,37,68); CYAN=(49,241,232); CYAN_D=(10,120,135); GREY=(120,128,140); LINE=(214,220,226); TEAL=(104,204,198)
@@ -15,7 +22,7 @@ UP = [18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28]
 LO = [48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38]
 def load(n):
     s = st.get(n, "natural")
-    if s == "missing": return None
+    if s in ("missing", "arch"): return None
     fn = {"crown": f"{TEETH}/zirconia_crown_{n}.png", "pontic": f"{TEETH}/bridge_pontic_{n}.png",
           "natural": f"{NAT}/natural_{n}.png",
           "implant_crown": f"{TEETH}/zirconia_crown_on_implant_{n}.png", "implant_pontic": f"{TEETH}/implant_bridge_pontic_{n}.png",
@@ -46,7 +53,7 @@ c = Image.new("RGBA", (W, H), (255,255,255,255)); d = ImageDraw.Draw(c)
 d.line((M, occ, W-M, occ), fill=LINE, width=3)
 d.line((W/2, top_lab+PILL+8, W/2, lo_lab-8), fill=LINE, width=3)
 def pill(x, y, n):
-    t = str(n); treated = st.get(n) in ("crown", "pontic", "implant_crown", "implant_pontic", "temp_implant", "temp_pontic", "veneer", "implant", "extraction")
+    t = str(n); treated = st.get(n) in ("arch", "crown", "pontic", "implant_crown", "implant_pontic", "temp_implant", "temp_pontic", "veneer", "implant", "extraction")
     w = d.textlength(t, font=fb)
     if treated:
         d.rounded_rectangle((x-33, y, x+33, y+PILL), radius=10, fill=CYAN)
@@ -65,6 +72,14 @@ for a, b in bridges:
         d.rounded_rectangle((x1, up_occ-76, x2, up_occ-36), radius=20, fill=BRC)
     else:
         d.rounded_rectangle((x1, lo_top+36, x2, lo_top+76), radius=20, fill=BRC)
+for _k, _a in ARCH.items():
+    up_ = _k == "upper"; C = CU if up_ else CL
+    x1 = C[_a["from"]] - bw[_a["from"]]*s/2; x2 = C[_a["to"]] + bw[_a["to"]]*s/2
+    xa, xb = min(x1, x2), max(x1, x2)
+    A = Image.open(_a["file"] if os.path.isabs(_a["file"]) else os.path.join(TEETH, _a["file"])).convert("RGBA"); A = A.crop(A.getbbox())
+    k = (xb - xa) / A.width; A = A.resize((round(A.width*k), round(A.height*k)), Image.LANCZOS)
+    y = up_occ - A.height if up_ else lo_top
+    c.alpha_composite(A, (round(xa), round(y)))
 for row, y_edge, up in ((UP, up_occ, True), (LO, lo_top, False)):
     for i, n in enumerate(row):
         im = ref[n]; x = (CU if up else CL)[n]
